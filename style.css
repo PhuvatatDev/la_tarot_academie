@@ -1,0 +1,378 @@
+/* LA Tarot Académie - Styles CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #A68245;
+    --black: #0A0A0A;
+    --white: #FFFFFF;
+    --shadow: rgba(10, 10, 10, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0A0A0A 100%);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Particules d'arrière-plan */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatUp 8s infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.5);
+    }
+}
+
+/* Container principal */
+.main-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(166, 130, 69, 0.1) 0%, transparent 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px var(--shadow);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* Section explicative */
+.intro-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(166, 130, 69, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.intro-section h2 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.intro-section p {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Zone de tirage */
+.draw-section {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.draw-button {
+    background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
+    color: var(--white);
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(166, 130, 69, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.draw-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(166, 130, 69, 0.6);
+}
+
+.draw-button:active {
+    transform: translateY(0);
+}
+
+.draw-button.shuffling {
+    animation: pulse 0.5s infinite;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Overlay et carte */
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.card-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.card-container {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    perspective: 1000px;
+}
+
+.card-flip {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card-flip.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--gold) 0%, #5C4A1F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--gold);
+}
+
+.card-back::before {
+    content: "✦";
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.card-face {
+    transform: rotateY(180deg);
+    background: var(--white);
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 3px solid var(--gold);
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.card-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.card-symbol {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.card-number {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.card-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.card-keywords {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    font-style: italic;
+    padding: 0 15px;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.close-button:hover {
+    background: var(--white);
+    color: var(--gold);
+    transform: rotate(90deg);
+}
+
+/* Section promotionnelle */
+.promo-section {
+    background: linear-gradient(135deg, rgba(166, 130, 69, 0.2) 0%, rgba(166, 130, 69, 0.05) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.promo-section h2 {
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.promo-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+    background: var(--gold);
+    color: var(--black);
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(166, 130, 69, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .card-container {
+        width: 250px;
+        height: 400px;
+    }
+
+    .draw-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+}

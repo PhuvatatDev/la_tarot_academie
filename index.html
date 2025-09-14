@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tarot Académie - Tirage de Tarot Interactif</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Particules d'arrière-plan -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Container principal -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">LA TAROT ACADÉMIE</h1>
+            <p class="subtitle">Formation Professionnelle Psycho-Tarot</p>
+        </header>
+
+        <!-- Section explicative -->
+        <section class="intro-section">
+            <h2>Bienvenue dans votre espace de tirage</h2>
+            <p>
+                Cet outil vous permet de tirer une carte du Tarot Rider-Waite Smith durant notre webinaire.
+                Chaque tirage est unique et personnel. Cliquez sur le bouton pour révéler votre carte
+                et découvrir le message qu'elle porte pour vous aujourd'hui.
+            </p>
+        </section>
+
+        <!-- Zone de tirage -->
+        <section class="draw-section">
+            <button class="draw-button" id="drawButton">Tirer une Carte</button>
+        </section>
+
+        <!-- Section promotionnelle -->
+        <section class="promo-section">
+            <h2>Devenez Praticien Certifié en Psycho-Tarot</h2>
+            <p>
+                Découvrez notre formation complète en Psycho-Tarot et apprenez à maîtriser l'art de la lecture
+                des cartes dans une approche thérapeutique et introspective.
+                <br><br>
+                ✨ Places limitées - Prochaine session bientôt ✨
+            </p>
+            <a href="#" target="_blank" class="cta-button">Découvrir la Formation</a>
+        </section>
+    </div>
+
+    <!-- Overlay pour la carte -->
+    <div class="card-overlay" id="cardOverlay">
+        <button class="close-button" id="closeButton">✕</button>
+        <div class="card-container">
+            <div class="card-flip" id="cardFlip">
+                <div class="card-back"></div>
+                <div class="card-face" id="cardFace">
+                    <!-- Le contenu de la carte sera inséré ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

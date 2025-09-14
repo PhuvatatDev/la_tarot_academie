@@ -1,9 +1,9 @@
 // LA Tarot Académie - JavaScript
 
-// Configuration - CHANGEZ CES VALEURS
-const GITHUB_USERNAME = 'VOTRE_USERNAME'; // Remplacez par votre username GitHub
-const REPO_NAME = 'tarot-academie'; // Nom de votre repo
-const BRANCH = 'main'; // ou 'master' selon votre configuration
+// Configuration GitHub Pages
+const GITHUB_USERNAME = 'PhuvatatDev';
+const REPO_NAME = 'la_tarot_academie';
+const BRANCH = 'main';
 
 // Définition des 22 Arcanes Majeurs du Tarot Rider-Waite Smith
 const tarotDeck = [

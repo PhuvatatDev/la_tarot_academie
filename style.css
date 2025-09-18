@@ -746,26 +746,47 @@ body {
 /* Panneau d'information de la carte */
 .card-info-panel {
     display: none;
-    position: absolute;
+    position: fixed;  /* Changé de absolute à fixed pour meilleur positionnement mobile */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 10, 10, 0.98);
     border: 2px solid var(--gold);
     border-radius: 20px;
-    padding: 30px;
+    padding: 50px 30px 30px;  /* Plus d'espace en haut pour le bouton fermer */
     max-width: 500px;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;  /* Scroll fluide sur iOS */
     z-index: 10001;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Barre de défilement personnalisée */
+.card-info-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card-info-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.card-info-panel::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+.card-info-panel::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
 }
 
 /* Bouton de fermeture pour le panneau d'information */
 .card-info-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
     background: linear-gradient(135deg, #4B3621, #6B4E31);
     border: 2px solid #6B4E31;
     color: var(--gold);
@@ -800,7 +821,9 @@ body {
     color: var(--gold);
     font-size: 1.8rem;
     margin-bottom: 20px;
+    margin-top: 0;  /* Assure que le titre commence en haut */
     text-align: center;
+    padding-right: 10px;  /* Évite le chevauchement avec le bouton X */
 }
 
 .card-info-content .keywords {
@@ -809,12 +832,15 @@ body {
     margin-bottom: 20px;
     text-align: center;
     font-size: 1.1rem;
+    padding: 0 10px;  /* Espace latéral pour meilleure lecture */
 }
 
 .card-info-content .description {
     line-height: 1.8;
     font-size: 1rem;
     color: var(--white);
+    text-align: justify;  /* Texte justifié pour meilleure lecture */
+    padding: 0 5px;  /* Léger padding latéral */
 }
 
 /* === SECTION PROMOTIONNELLE POUR LA FORMATION === */
@@ -1206,21 +1232,43 @@ body {
 
     /* Panneau d'information */
     .card-info-panel {
-        max-width: 90%;          /* Utilise plus l'écran sur mobile */
-        padding: 20px;
-        margin: 10px;
+        width: 92%;              /* Largeur fixe pour mobile */
+        max-width: none;          /* Supprime la limite max-width */
+        left: 4%;                 /* Centre avec margins égales */
+        right: 4%;
+        transform: translateY(-50%);  /* Seulement translation Y */
+        padding: 45px 15px 20px;  /* Padding adapté : plus en haut pour le bouton X */
+        max-height: 90vh;         /* Plus d'espace vertical */
+        border-radius: 15px;      /* Coins moins arrondis sur mobile */
+    }
+
+    /* Bouton de fermeture sur mobile */
+    .card-info-close {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
     }
 
     .card-info-content h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;       /* Titre légèrement plus petit */
+        margin-bottom: 15px;
+        padding: 0 25px 0 5px;   /* Espace pour le bouton X à droite */
+        line-height: 1.2;
     }
 
     .card-info-content .keywords {
-        font-size: 0.95rem;
+        font-size: 0.9rem;        /* Mots-clés plus petits */
+        margin-bottom: 15px;
+        line-height: 1.4;
     }
 
     .card-info-content .description {
-        font-size: 0.9rem;
+        font-size: 0.85rem;       /* Texte légèrement plus petit pour mobile */
+        line-height: 1.6;         /* Meilleur espacement des lignes */
+        text-align: left;         /* Aligné à gauche sur mobile (plus lisible) */
+        padding: 0 3px;
     }
 
     /* Section promotionnelle */
@@ -1316,5 +1364,26 @@ body {
     .saved-card-thumbnail {
         width: 140px;
         height: 210px;
+    }
+
+    /* Panneau d'information sur très petits écrans */
+    .card-info-panel {
+        width: 94%;
+        left: 3%;
+        right: 3%;
+        padding: 40px 12px 15px;
+    }
+
+    .card-info-content h3 {
+        font-size: 1.2rem;
+        padding-right: 30px;     /* Plus d'espace pour éviter le bouton X */
+    }
+
+    .card-info-content .keywords {
+        font-size: 0.85rem;
+    }
+
+    .card-info-content .description {
+        font-size: 0.82rem;
     }
 }

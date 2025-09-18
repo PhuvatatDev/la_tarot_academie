@@ -824,9 +824,12 @@ body {
     border: 2px solid var(--gold);
     border-radius: 20px;
     padding: 40px;
+    padding-bottom: 60px;  /* Plus d'espace en bas pour le logo IPHM */
     margin-top: 60px;
     text-align: center;
-    position: relative;  /* Pour positionner le logo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .promo-section h2 {
@@ -887,13 +890,12 @@ body {
 /* === LOGO IPHM === */
 /* Container et style pour le logo de certification */
 .iphm-logo-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    margin-top: 40px;  /* Changé de position absolute à margin pour éviter le chevauchement */
     opacity: 0.9;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -1136,20 +1138,183 @@ body {
     }
 
     .logo {
-        font-size: 2rem;        /* Réduit la taille du logo */
+        font-size: 1.8rem;        /* Réduit la taille du logo */
+        letter-spacing: 1px;     /* Réduit l'espacement des lettres */
     }
 
     .subtitle {
-        font-size: 1rem;        /* Réduit la taille du sous-titre */
+        font-size: 0.9rem;        /* Réduit la taille du sous-titre */
     }
 
-    .card-container {
-        width: 250px;           /* Réduit la taille de la carte */
-        height: 400px;
+    .intro-section {
+        padding: 20px 15px;      /* Moins de padding sur mobile */
+    }
+
+    .intro-section h2 {
+        font-size: 1.4rem;       /* Titre plus petit */
+    }
+
+    .intro-section p {
+        font-size: 0.95rem;      /* Texte légèrement plus petit */
+    }
+
+    .draw-section {
+        margin: 50px 0;          /* Moins d'espace vertical */
+        padding: 20px 0;
     }
 
     .draw-button {
-        padding: 15px 30px;     /* Réduit le padding du bouton */
-        font-size: 1.1rem;
+        padding: 15px 30px;      /* Bouton plus petit */
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* Miniature de carte */
+    .saved-card-thumbnail {
+        width: 160px;            /* Plus petite sur mobile */
+        height: 240px;
+        margin-top: 30px;
+    }
+
+    .delete-card-btn {
+        width: 30px;             /* Bouton de suppression plus petit */
+        height: 30px;
+        font-size: 18px;
+        top: -10px;
+        right: -10px;
+    }
+
+    /* Carte dans l'overlay */
+    .card-container {
+        width: 240px;            /* Carte plus petite sur mobile */
+        height: 380px;
+    }
+
+    /* Boutons d'action sous la carte */
+    .card-actions {
+        flex-direction: column;  /* Boutons en colonne sur mobile */
+        gap: 10px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .card-action-button {
+        width: 100%;             /* Boutons pleine largeur */
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Panneau d'information */
+    .card-info-panel {
+        max-width: 90%;          /* Utilise plus l'écran sur mobile */
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .card-info-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .card-info-content .keywords {
+        font-size: 0.95rem;
+    }
+
+    .card-info-content .description {
+        font-size: 0.9rem;
+    }
+
+    /* Section promotionnelle */
+    .promo-section {
+        padding: 30px 20px;      /* Moins de padding */
+        margin-top: 40px;
+    }
+
+    .promo-section h2 {
+        font-size: 1.5rem;       /* Titre plus petit */
+        line-height: 1.3;
+    }
+
+    .promo-section p {
+        font-size: 0.95rem;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    /* Logo IPHM sur mobile */
+    .iphm-logo-container {
+        position: relative;      /* Pas absolute sur mobile */
+        margin-top: 30px;
+        flex-direction: column;  /* Texte au-dessus du logo */
+        gap: 10px;
+    }
+
+    .iphm-logo {
+        width: 60px;             /* Logo IPHM plus petit */
+        height: 60px;
+    }
+
+    .iphm-text {
+        font-size: 0.85rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 30px 15px 15px;
+        margin-top: 50px;
+    }
+
+    .footer-logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .footer-title {
+        font-size: 1.2rem;
+    }
+
+    .footer-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .footer-link {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    /* Popups */
+    .confirm-popup-content,
+    .iphm-popup-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .confirm-popup-content h3,
+    .iphm-popup-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .confirm-popup-content p,
+    .iphm-popup-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* Styles pour très petits écrans (moins de 380px) */
+@media (max-width: 380px) {
+    .logo {
+        font-size: 1.5rem;       /* Encore plus petit */
+    }
+
+    .card-container {
+        width: 200px;            /* Carte encore plus petite */
+        height: 320px;
+    }
+
+    .saved-card-thumbnail {
+        width: 140px;
+        height: 210px;
     }
 }

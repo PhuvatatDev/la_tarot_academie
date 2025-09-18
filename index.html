@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- === META TAGS ET CONFIGURATION DE LA PAGE === -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Tarot Académie - Tirage de Tarot Interactif</title>
+
+    <!-- === FEUILLES DE STYLE === -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Particules d'arrière-plan -->
+    <!-- === EFFET VISUEL : PARTICULES D'ARRIÈRE-PLAN === -->
+    <!-- Container pour les particules dorées animées qui créent l'ambiance mystique -->
     <div class="particles-container" id="particles"></div>
 
-    <!-- Container principal -->
+    <!-- === CONTAINER PRINCIPAL DE L'APPLICATION === -->
+    <!-- Contient tout le contenu visible de la page (z-index plus élevé que les particules) -->
     <div class="main-container">
-        <!-- Header -->
+        <!-- === EN-TÊTE DE L'APPLICATION === -->
+        <!-- Logo et sous-titre de la Tarot Académie -->
         <header class="header">
             <h1 class="logo">LA TAROT ACADÉMIE</h1>
             <p class="subtitle">Formation Professionnelle Psycho-Tarot</p>
         </header>
 
-        <!-- Section explicative -->
+        <!-- === SECTION D'INTRODUCTION ET D'EXPLICATION === -->
+        <!-- Explique aux participants comment utiliser l'outil de tirage -->
         <section class="intro-section">
             <h2>Bienvenue dans votre espace de tirage</h2>
             <p>
@@ -28,12 +35,14 @@
             </p>
         </section>
 
-        <!-- Zone de tirage -->
+        <!-- === ZONE DE TIRAGE INTERACTIF === -->
+        <!-- Bouton principal pour déclencher le tirage aléatoire d'une carte -->
         <section class="draw-section">
             <button class="draw-button" id="drawButton">Tirer une Carte</button>
         </section>
 
-        <!-- Section promotionnelle -->
+        <!-- === SECTION PROMOTIONNELLE POUR LA FORMATION === -->
+        <!-- Présente la formation en Psycho-Tarot avec appel à l'action -->
         <section class="promo-section">
             <h2>Devenez Praticien Certifié en Psycho-Tarot</h2>
             <p>
@@ -42,23 +51,33 @@
                 <br><br>
                 ✨ Places limitées - Prochaine session bientôt ✨
             </p>
+            <!-- Bouton CTA (Call-To-Action) pour la formation -->
             <a href="#" target="_blank" class="cta-button">Découvrir la Formation</a>
         </section>
     </div>
 
-    <!-- Overlay pour la carte -->
+    <!-- === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === -->
+    <!-- Fenêtre modale qui s'affiche lors du tirage avec animation 3D -->
     <div class="card-overlay" id="cardOverlay">
+        <!-- Bouton de fermeture de la modal -->
         <button class="close-button" id="closeButton">✕</button>
+
+        <!-- Container de la carte avec effet 3D -->
         <div class="card-container">
+            <!-- Élément qui effectue la rotation 3D (flip) -->
             <div class="card-flip" id="cardFlip">
+                <!-- Face arrière de la carte (dos doré) -->
                 <div class="card-back"></div>
+                <!-- Face avant de la carte (contenu dynamique) -->
                 <div class="card-face" id="cardFace">
-                    <!-- Le contenu de la carte sera inséré ici -->
+                    <!-- Le contenu de la carte sera inséré ici dynamiquement par JavaScript -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- === CHARGEMENT DU JAVASCRIPT === -->
+    <!-- Script principal gérant toutes les interactions et animations -->
     <script src="script.js"></script>
 </body>
 </html>

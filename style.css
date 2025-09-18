@@ -1,18 +1,24 @@
 /* LA Tarot Académie - Styles CSS */
 
+/* === RÉINITIALISATION GLOBALE DES STYLES === */
+/* Réinitialise tous les éléments pour une cohérence cross-browser */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* === VARIABLES CSS (COULEURS DE LA MARQUE) === */
+/* Définition des couleurs principales utilisées dans toute l'application */
 :root {
-    --gold: #A68245;
-    --black: #0A0A0A;
-    --white: #FFFFFF;
-    --shadow: rgba(10, 10, 10, 0.3);
+    --gold: #A68245;    /* Couleur dorée principale de la marque */
+    --black: #0A0A0A;   /* Noir profond pour les fonds */
+    --white: #FFFFFF;   /* Blanc pur pour les contrastes */
+    --shadow: rgba(10, 10, 10, 0.3); /* Ombre standard */
 }
 
+/* === STYLES DE BASE DU BODY === */
+/* Configuration générale de la page avec fond dégradé sombre */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #1a1a1a 0%, #0A0A0A 100%);
@@ -22,53 +28,58 @@ body {
     position: relative;
 }
 
-/* Particules d'arrière-plan */
+/* === SYSTÈME DE PARTICULES ANIMÉES === */
+/* Container des particules dorées flottantes pour l'ambiance mystique */
 .particles-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    pointer-events: none;  /* Les particules ne bloquent pas les interactions */
     overflow: hidden;
-    z-index: 1;
+    z-index: 1;            /* Derrière le contenu principal */
 }
 
+/* Style individuel de chaque particule */
 .particle {
     position: absolute;
     background: var(--gold);
-    border-radius: 50%;
+    border-radius: 50%;    /* Forme circulaire */
     opacity: 0;
     animation: floatUp 8s infinite;
 }
 
+/* Animation de flottement vers le haut des particules */
 @keyframes floatUp {
     0% {
         opacity: 0;
-        transform: translateY(100vh) scale(0);
+        transform: translateY(100vh) scale(0);  /* Départ du bas, invisible */
     }
     10% {
-        opacity: 0.6;
+        opacity: 0.6;      /* Apparition progressive */
     }
     50% {
-        opacity: 0.3;
+        opacity: 0.3;      /* Fade au milieu du parcours */
     }
     100% {
         opacity: 0;
-        transform: translateY(-100vh) scale(1.5);
+        transform: translateY(-100vh) scale(1.5);  /* Disparition en haut */
     }
 }
 
-/* Container principal */
+/* === CONTAINER PRINCIPAL DU CONTENU === */
+/* Centre le contenu et le place au-dessus des particules */
 .main-container {
     position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
+    z-index: 2;            /* Au-dessus des particules (z-index: 1) */
+    max-width: 1200px;     /* Largeur maximale pour grands écrans */
+    margin: 0 auto;        /* Centrage horizontal */
     padding: 20px;
 }
 
-/* Header */
+/* === EN-TÊTE DE L'APPLICATION === */
+/* Zone contenant le logo et le sous-titre avec fond dégradé subtil */
 .header {
     text-align: center;
     padding: 40px 20px;
@@ -77,6 +88,7 @@ body {
     margin-bottom: 40px;
 }
 
+/* Logo principal de La Tarot Académie */
 .logo {
     font-family: 'Arial Black', sans-serif;
     font-size: 3rem;
@@ -88,6 +100,7 @@ body {
     margin-bottom: 10px;
 }
 
+/* Sous-titre descriptif */
 .subtitle {
     font-size: 1.2rem;
     color: var(--gold);
@@ -95,14 +108,15 @@ body {
     letter-spacing: 1px;
 }
 
-/* Section explicative */
+/* === SECTION D'INTRODUCTION === */
+/* Zone explicative avec effet de glassmorphism */
 .intro-section {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(166, 130, 69, 0.3);
+    background: rgba(255, 255, 255, 0.05);      /* Fond légèrement transparent */
+    border: 1px solid rgba(166, 130, 69, 0.3);  /* Bordure dorée subtile */
     border-radius: 15px;
     padding: 30px;
     margin-bottom: 40px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);                /* Effet de flou arrière-plan */
 }
 
 .intro-section h2 {
@@ -116,12 +130,14 @@ body {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Zone de tirage */
+/* === ZONE DE TIRAGE DES CARTES === */
+/* Section contenant le bouton principal de tirage */
 .draw-section {
     text-align: center;
     margin: 50px 0;
 }
 
+/* Bouton principal pour tirer une carte */
 .draw-button {
     background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
     color: var(--white);
@@ -129,9 +145,9 @@ body {
     padding: 20px 50px;
     font-size: 1.3rem;
     font-weight: bold;
-    border-radius: 50px;
+    border-radius: 50px;                        /* Bouton arrondi */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;                  /* Animation fluide au survol */
     box-shadow: 0 10px 30px rgba(166, 130, 69, 0.4);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -148,30 +164,33 @@ body {
     transform: translateY(0);
 }
 
+/* État du bouton pendant le mélange des cartes */
 .draw-button.shuffling {
-    animation: pulse 0.5s infinite;
-    pointer-events: none;
+    animation: pulse 0.5s infinite;   /* Animation de pulsation */
+    pointer-events: none;             /* Désactive le clic pendant l'animation */
     opacity: 0.8;
 }
 
+/* Animation de pulsation pour le bouton */
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.05); }   /* Léger grossissement */
 }
 
-/* Overlay et carte */
+/* === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === */
+/* Fond semi-transparent qui couvre toute la page lors de l'affichage d'une carte */
 .card-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    display: none;
+    background: rgba(0, 0, 0, 0.85);   /* Fond noir semi-transparent */
+    display: none;                      /* Caché par défaut */
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    backdrop-filter: blur(5px);
+    z-index: 9999;                      /* Au-dessus de tout */
+    backdrop-filter: blur(5px);         /* Flou de l'arrière-plan */
 }
 
 .card-overlay.active {
@@ -184,34 +203,39 @@ body {
     to { opacity: 1; }
 }
 
+/* Container de la carte avec perspective 3D */
 .card-container {
     position: relative;
     width: 300px;
     height: 500px;
-    perspective: 1000px;
+    perspective: 1000px;       /* Active la perspective 3D */
 }
 
+/* Élément qui effectue la rotation 3D */
 .card-flip {
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-style: preserve-3d;  /* Préserve l'effet 3D des enfants */
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);  /* Animation avec rebond */
 }
 
+/* État retourné de la carte */
 .card-flip.flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg);    /* Rotation complète sur l'axe Y */
 }
 
+/* Styles communs aux deux faces de la carte */
 .card-face, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    backface-visibility: hidden;   /* Cache la face non visible */
     border-radius: 15px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
+/* Face arrière de la carte (dos doré) */
 .card-back {
     background: linear-gradient(135deg, var(--gold) 0%, #5C4A1F 100%);
     display: flex;
@@ -220,14 +244,16 @@ body {
     border: 3px solid var(--gold);
 }
 
+/* Symbole décoratif sur le dos de la carte */
 .card-back::before {
     content: "✦";
     font-size: 5rem;
     color: rgba(255, 255, 255, 0.3);
 }
 
+/* Face avant de la carte (contenu révélé) */
 .card-face {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg);     /* Déjà retournée pour être visible après flip */
     background: var(--white);
     color: var(--black);
     display: flex;
@@ -239,13 +265,15 @@ body {
     overflow: hidden;
 }
 
+/* Image de la carte de tarot */
 .card-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: contain;        /* Maintient les proportions de l'image */
     border-radius: 12px;
 }
 
+/* Placeholder affiché si l'image ne charge pas */
 .card-image-placeholder {
     width: 100%;
     height: 100%;
@@ -291,6 +319,7 @@ body {
     padding: 0 15px;
 }
 
+/* Bouton de fermeture de la modal */
 .close-button {
     position: absolute;
     top: 20px;
@@ -300,20 +329,22 @@ body {
     border: none;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50%;         /* Bouton circulaire */
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 10000;
+    z-index: 10000;             /* Au-dessus de tout dans la modal */
 }
 
+/* Animation du bouton de fermeture au survol */
 .close-button:hover {
     background: var(--white);
     color: var(--gold);
-    transform: rotate(90deg);
+    transform: rotate(90deg);   /* Rotation de 90 degrés au survol */
 }
 
-/* Section promotionnelle */
+/* === SECTION PROMOTIONNELLE POUR LA FORMATION === */
+/* Zone de promotion de la formation en Psycho-Tarot */
 .promo-section {
     background: linear-gradient(135deg, rgba(166, 130, 69, 0.2) 0%, rgba(166, 130, 69, 0.05) 100%);
     border: 2px solid var(--gold);
@@ -336,6 +367,7 @@ body {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Bouton d'appel à l'action (CTA) pour la formation */
 .cta-button {
     background: var(--gold);
     color: var(--black);
@@ -346,33 +378,35 @@ body {
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: none;
+    text-decoration: none;      /* Supprime le soulignement du lien */
     display: inline-block;
 }
 
+/* État survol du bouton CTA */
 .cta-button:hover {
     background: var(--white);
-    transform: translateY(-3px);
+    transform: translateY(-3px);   /* Léger soulèvement */
     box-shadow: 0 10px 30px rgba(166, 130, 69, 0.5);
 }
 
-/* Responsive */
+/* === STYLES RESPONSIVE POUR MOBILES ET TABLETTES === */
+/* Adaptations pour écrans de moins de 768px de large */
 @media (max-width: 768px) {
     .logo {
-        font-size: 2rem;
+        font-size: 2rem;        /* Réduit la taille du logo */
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 1rem;        /* Réduit la taille du sous-titre */
     }
 
     .card-container {
-        width: 250px;
+        width: 250px;           /* Réduit la taille de la carte */
         height: 400px;
     }
 
     .draw-button {
-        padding: 15px 30px;
+        padding: 15px 30px;     /* Réduit le padding du bouton */
         font-size: 1.1rem;
     }
 }

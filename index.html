@@ -20,40 +20,90 @@
         <!-- === EN-TÊTE DE L'APPLICATION === -->
         <!-- Logo et sous-titre de la Tarot Académie -->
         <header class="header">
-            <h1 class="logo">LA TAROT ACADÉMIE</h1>
-            <p class="subtitle">Formation Professionnelle Psycho-Tarot</p>
+            <div class="header-content">
+                <img src="images/logo/logo_LaTarotAcademie.png" alt="La Tarot Académie Logo" class="academie-logo">
+                <div class="header-text">
+                    <h1 class="logo">LA TAROT ACADÉMIE</h1>
+                    <p class="subtitle">Formation de Tarologie Professionnelle Certifiée par l'IPHM</p>
+                </div>
+            </div>
         </header>
 
         <!-- === SECTION D'INTRODUCTION ET D'EXPLICATION === -->
         <!-- Explique aux participants comment utiliser l'outil de tirage -->
         <section class="intro-section">
-            <h2>Bienvenue dans votre espace de tirage</h2>
+            <h2>Bienvenue dans ton espace de tirage</h2>
             <p>
-                Cet outil vous permet de tirer une carte du Tarot Rider-Waite Smith durant notre webinaire.
-                Chaque tirage est unique et personnel. Cliquez sur le bouton pour révéler votre carte
-                et découvrir le message qu'elle porte pour vous aujourd'hui.
+                Tu vas utiliser ici un outil unique : un générateur de tirage de cartes du Tarot Rider-Waite Smith.
+                Chaque tirage est personnel et différent. Pour que l'expérience soit la plus juste possible,
+                suis attentivement mes instructions tout au long du webinaire. Clique sur le bouton pour révéler
+                ta carte et découvre le message qu'elle a à te transmettre aujourd'hui.
             </p>
         </section>
 
         <!-- === ZONE DE TIRAGE INTERACTIF === -->
         <!-- Bouton principal pour déclencher le tirage aléatoire d'une carte -->
         <section class="draw-section">
-            <button class="draw-button" id="drawButton">Tirer une Carte</button>
+            <button class="draw-button" id="drawButton">TIRE UNE CARTE ICI</button>
         </section>
 
         <!-- === SECTION PROMOTIONNELLE POUR LA FORMATION === -->
         <!-- Présente la formation en Psycho-Tarot avec appel à l'action -->
         <section class="promo-section">
-            <h2>Devenez Praticien Certifié en Psycho-Tarot</h2>
+            <h2>Forme-toi à la Tarologie Professionnelle et décuple l'impact de ta pratique thérapeutique !</h2>
+            <p class="certification-info">
+                (Formation de Tarologie Professionnelle Certifiante par l'IPHM - International Practitioners of Holistic Medicine)
+            </p>
             <p>
-                Découvrez notre formation complète en Psycho-Tarot et apprenez à maîtriser l'art de la lecture
-                des cartes dans une approche thérapeutique et introspective.
-                <br><br>
-                ✨ Places limitées - Prochaine session bientôt ✨
+                Découvre l'unique formation sur 5 mois, conçue pour t'aider à maîtriser le Psycho-Tarot Professionnel
+                et à créer une véritable offre, mêlant tarot et tes autres outils, avec une mise en pratique.
+                Cette formation te permet de développer ton expertise et ton activité professionnelle,
+                pour qu'elle soit pérenne et alignée avec tes valeurs.
+            </p>
+            <p class="inscription-info">
+                <br>
+                <strong>Possibilité de t'inscrire dès maintenant à la nouvelle cohorte !</strong>
             </p>
             <!-- Bouton CTA (Call-To-Action) pour la formation -->
-            <a href="#" target="_blank" class="cta-button">Découvrir la Formation</a>
+            <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" class="cta-button">Découvre toute la formation ici</a>
+
+            <!-- Logo IPHM de certification -->
+            <div class="iphm-logo-container">
+                <span class="iphm-text">En savoir plus</span>
+                <img src="images/logo/IPHM_logo.jpg" alt="IPHM Accreditation" class="iphm-logo" id="iphmLogo">
+            </div>
         </section>
+    </div>
+
+    <!-- === POPUP IPHM INFORMATION === -->
+    <!-- Popup explicative pour la certification IPHM -->
+    <div class="iphm-popup" id="iphmPopup">
+        <div class="iphm-popup-content">
+            <button class="iphm-popup-close" id="iphmClose">✕</button>
+
+            <!-- Logo IPHM dans la popup -->
+            <div class="iphm-popup-logo">
+                <img src="images/logo/IPHM_logo.jpg" alt="IPHM Logo">
+            </div>
+
+            <h3>Certification IPHM</h3>
+
+            <div class="iphm-popup-text" id="iphmText">
+                <p>
+                    L'International Practitioners of Holistic Medicine (IPHM) est un organisme d'accréditation indépendant,
+                    engagé à maintenir des standards élevés tout en valorisant la diversité des pratiques holistiques.
+                    Nous croyons que l'accréditation doit être inclusive, éthique et pratique,
+                    reflétant des compétences réelles et non seulement du papier.
+                </p>
+
+                <!-- Lien vers le site IPHM -->
+                <div class="iphm-website-link">
+                    <a href="https://www.iphm.co.uk/" target="_blank" class="iphm-link">
+                        Visiter le site officiel IPHM →
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === -->

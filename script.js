@@ -94,12 +94,12 @@ const randomizer = new UltraRandomizer();
 
 // === SYSTÈME DE PARTICULES ANIMÉES ===
 // Crée les particules dorées flottantes pour l'ambiance mystique
-// Génère 30 particules avec des tailles et animations aléatoires
+// Génère 50 particules avec des tailles et animations aléatoires
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
 
-    // Boucle pour créer 30 particules
-    for (let i = 0; i < 30; i++) {
+    // Boucle pour créer 50 particules
+    for (let i = 0; i < 50; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
 
@@ -194,7 +194,7 @@ function drawCard() {
 
     // Démarre l'animation de mélange (pulsation du bouton)
     button.classList.add('shuffling');
-    button.textContent = 'Mélange des énergies...';  // Feedback utilisateur
+    button.innerHTML = '<span class="spinning-star">✦</span>';  // Étoile qui tourne
 
     // Délai de 1.5s pour l'effet de suspense
     setTimeout(() => {
@@ -222,7 +222,7 @@ function drawCard() {
 
         // Réinitialise le bouton à son état normal
         button.classList.remove('shuffling');
-        button.textContent = 'Tirer une Carte';
+        button.textContent = 'TIRE UNE CARTE ICI';
     }, 1500);
 }
 
@@ -262,4 +262,41 @@ document.addEventListener('DOMContentLoaded', function() {
             closeCard();
         }
     });
+
+    // === POPUP IPHM ===
+    // Gestionnaires pour la popup d'information IPHM
+    const iphmLogo = document.getElementById('iphmLogo');
+    const iphmContainer = document.querySelector('.iphm-logo-container');
+    const iphmPopup = document.getElementById('iphmPopup');
+    const iphmClose = document.getElementById('iphmClose');
+
+    // Ouvrir la popup au clic sur le logo ou le container
+    if (iphmLogo) {
+        iphmLogo.addEventListener('click', () => {
+            iphmPopup.classList.add('active');
+        });
+    }
+
+    // Ouvrir aussi au clic sur tout le container (texte + logo)
+    if (iphmContainer) {
+        iphmContainer.addEventListener('click', () => {
+            iphmPopup.classList.add('active');
+        });
+    }
+
+    // Fermer la popup avec le bouton de fermeture
+    if (iphmClose) {
+        iphmClose.addEventListener('click', () => {
+            iphmPopup.classList.remove('active');
+        });
+    }
+
+    // Fermer la popup en cliquant sur le fond
+    if (iphmPopup) {
+        iphmPopup.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                iphmPopup.classList.remove('active');
+            }
+        });
+    }
 });

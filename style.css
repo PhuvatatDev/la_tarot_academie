@@ -81,11 +81,33 @@ body {
 /* === EN-TÊTE DE L'APPLICATION === */
 /* Zone contenant le logo et le sous-titre avec fond dégradé subtil */
 .header {
-    text-align: center;
     padding: 40px 20px;
     background: linear-gradient(135deg, rgba(166, 130, 69, 0.1) 0%, transparent 100%);
     border-radius: 20px;
     margin-bottom: 40px;
+}
+
+/* Container pour le contenu du header */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Logo de La Tarot Académie */
+.academie-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(166, 130, 69, 0.3);
+    background: white;
+}
+
+/* Container pour le texte du header */
+.header-text {
+    text-align: left;
 }
 
 /* Logo principal de La Tarot Académie */
@@ -134,12 +156,13 @@ body {
 /* Section contenant le bouton principal de tirage */
 .draw-section {
     text-align: center;
-    margin: 50px 0;
+    margin: 100px 0;  /* Augmenté de 50px à 100px pour plus d'espace */
+    padding: 40px 0;  /* Ajout de padding pour encore plus de mise en valeur */
 }
 
 /* Bouton principal pour tirer une carte */
 .draw-button {
-    background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
+    background: linear-gradient(135deg, #D4AF37 0%, var(--gold) 35%, #8B6914 70%, #6B5515 100%);
     color: var(--white);
     border: none;
     padding: 20px 50px;
@@ -148,7 +171,9 @@ body {
     border-radius: 50px;                        /* Bouton arrondi */
     cursor: pointer;
     transition: all 0.3s ease;                  /* Animation fluide au survol */
-    box-shadow: 0 10px 30px rgba(166, 130, 69, 0.4);
+    box-shadow: 0 8px 25px rgba(166, 130, 69, 0.3),
+                0 4px 10px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
@@ -157,7 +182,9 @@ body {
 
 .draw-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(166, 130, 69, 0.6);
+    box-shadow: 0 12px 35px rgba(166, 130, 69, 0.5),
+                0 6px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .draw-button:active {
@@ -166,12 +193,24 @@ body {
 
 /* État du bouton pendant le mélange des cartes */
 .draw-button.shuffling {
-    animation: pulse 0.5s infinite;   /* Animation de pulsation */
     pointer-events: none;             /* Désactive le clic pendant l'animation */
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
-/* Animation de pulsation pour le bouton */
+/* Étoile qui tourne pendant le chargement */
+.spinning-star {
+    display: inline-block;
+    font-size: 2.5rem;
+    animation: spin 1s linear infinite;
+}
+
+/* Animation de rotation pour l'étoile */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animation de pulsation (désactivée mais gardée si besoin) */
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }   /* Léger grossissement */
@@ -352,6 +391,7 @@ body {
     padding: 40px;
     margin-top: 60px;
     text-align: center;
+    position: relative;  /* Pour positionner le logo */
 }
 
 .promo-section h2 {
@@ -365,6 +405,26 @@ body {
     line-height: 1.8;
     margin-bottom: 30px;
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* Style pour l'info de certification IPHM */
+.certification-info {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+/* Style pour l'info d'inscription */
+.inscription-info {
+    margin-top: 30px;
+    font-size: 1.15rem;
+}
+
+.inscription-info strong {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(166, 130, 69, 0.3);
 }
 
 /* Bouton d'appel à l'action (CTA) pour la formation */
@@ -389,9 +449,169 @@ body {
     box-shadow: 0 10px 30px rgba(166, 130, 69, 0.5);
 }
 
+/* === LOGO IPHM === */
+/* Container et style pour le logo de certification */
+.iphm-logo-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Texte "En savoir plus" à gauche du logo */
+.iphm-text {
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 600;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.iphm-logo-container:hover .iphm-text {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.iphm-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.iphm-logo:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 6px 15px rgba(166, 130, 69, 0.4);
+}
+
+/* === POPUP IPHM === */
+/* Popup pour les informations de certification */
+.iphm-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.iphm-popup.active {
+    display: flex;
+}
+
+.iphm-popup-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(166, 130, 69, 0.3);
+}
+
+.iphm-popup-content h3 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.iphm-popup-text {
+    color: var(--white);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.iphm-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.iphm-popup-close:hover {
+    background: var(--white);
+    transform: rotate(90deg);
+}
+
+/* Logo IPHM dans la popup */
+.iphm-popup-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.iphm-popup-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(166, 130, 69, 0.3);
+}
+
+/* Lien vers le site IPHM */
+.iphm-website-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.iphm-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: 2px solid var(--gold);
+    border-radius: 25px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.iphm-link:hover {
+    background: var(--gold);
+    color: var(--black);
+    box-shadow: 0 5px 20px rgba(166, 130, 69, 0.4);
+}
+
 /* === STYLES RESPONSIVE POUR MOBILES ET TABLETTES === */
 /* Adaptations pour écrans de moins de 768px de large */
 @media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;  /* Logo au-dessus du texte sur mobile */
+        gap: 20px;
+    }
+
+    .header-text {
+        text-align: center;      /* Centre le texte sur mobile */
+    }
+
+    .academie-logo {
+        width: 100px;            /* Logo plus petit sur mobile */
+        height: 100px;
+    }
+
     .logo {
         font-size: 2rem;        /* Réduit la taille du logo */
     }

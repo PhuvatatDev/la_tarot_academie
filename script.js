@@ -190,10 +190,16 @@ const tarotDeck = [
 
 // === FONCTION UTILITAIRE POUR LES IMAGES ===
 // Construit le chemin complet vers l'image de la carte
+// Utilise WebP optimisé par défaut avec fallback PNG
 // @param {Object} card - Objet carte contenant la propriété 'image'
-// @return {String} - Chemin relatif vers l'image de la carte
-function getImageUrl(card) {
-    return `./images/major/${card.image}`;
+// @param {String} size - Taille souhaitée: '300w' ou '150w' (défaut: 300w)
+// @return {Object} - URLs pour WebP et PNG fallback
+function getImageUrl(card, size = '300w') {
+    const baseName = card.image.replace('.png', '');
+    return {
+        webp: `./images/major/${baseName}-${size}.webp`,
+        fallback: `./images/major/${card.image}`
+    };
 }
 
 // === SYSTÈME DE RANDOMISATION AVANCÉ ===
@@ -283,16 +289,26 @@ function createParticles() {
 function createCardContent(card) {
     // Vérifie si la carte a une image définie
     if (card.image) {
-        // Crée l'élément image
+        // Crée l'élément image avec support WebP
         const img = document.createElement('img');
-        img.src = getImageUrl(card);
+        const urls = getImageUrl(card, '300w');
+
+        // Utilise WebP optimisé par défaut
+        img.src = urls.webp;
         img.alt = card.name;  // Texte alternatif pour l'accessibilité
         img.className = 'card-image';
+        img.loading = 'lazy'; // Chargement différé pour performance
 
-        // Gestion d'erreur: affiche un placeholder si l'image ne charge pas
+        // Gestion d'erreur: essaie PNG si WebP échoue
         img.onerror = function() {
-            const fallbackElement = createFallbackElement(card);
-            img.parentElement.replaceChild(fallbackElement, img);
+            if (this.src !== urls.fallback) {
+                // Premier échec: essayer le PNG original
+                this.src = urls.fallback;
+            } else {
+                // Si PNG échoue aussi, utiliser le fallback textuel
+                const fallbackElement = createFallbackElement(card);
+                img.parentElement.replaceChild(fallbackElement, img);
+            }
         };
         return img;
     } else {
@@ -477,9 +493,17 @@ function updateHistoryButton() {
     const savedDraw = getSavedDraw();
 
     if (savedDraw && thumbnail && thumbnailImage) {
-        // Met à jour l'image de la miniature
-        thumbnailImage.src = getImageUrl(savedDraw);
+        // Met à jour l'image de la miniature avec WebP optimisé
+        const urls = getImageUrl(savedDraw, '150w'); // Version plus petite pour miniature
+        thumbnailImage.src = urls.webp;
         thumbnailImage.alt = savedDraw.name;
+        thumbnailImage.loading = 'lazy';
+
+        // Fallback vers PNG si WebP ne fonctionne pas
+        thumbnailImage.onerror = function() {
+            this.src = urls.fallback;
+            this.onerror = null;
+        };
 
         // Affiche la miniature
         thumbnail.classList.add('visible');

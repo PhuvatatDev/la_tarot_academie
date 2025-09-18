@@ -1,0 +1,17 @@
+{
+  "name": "la-tarot-academie",
+  "version": "1.0.0",
+  "description": "Outil interactif de tirage de tarot pour webinaires",
+  "main": "script.js",
+  "scripts": {
+    "optimize-images": "node tools/optimize-images.js",
+    "serve": "npx live-server --port=8000",
+    "build": "npm run optimize-images"
+  },
+  "keywords": ["tarot", "webinar", "interactive"],
+  "author": "LA TAROT ACADÉMIE",
+  "license": "MIT",
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}

@@ -158,6 +158,10 @@ body {
     text-align: center;
     margin: 100px 0;  /* Augmenté de 50px à 100px pour plus d'espace */
     padding: 40px 0;  /* Ajout de padding pour encore plus de mise en valeur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Bouton principal pour tirer une carte */
@@ -216,6 +220,296 @@ body {
     50% { transform: scale(1.05); }   /* Léger grossissement */
 }
 
+/* === MINIATURE DE LA CARTE SAUVEGARDÉE === */
+.saved-card-thumbnail {
+    display: none;  /* Caché par défaut */
+    width: 240px;   /* Doublé de 120px */
+    height: 360px;  /* Doublé de 180px */
+    border-radius: 15px;
+    overflow: visible;  /* Changé pour permettre au bouton de déborder */
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(166, 130, 69, 0.4);
+    border: 3px solid var(--gold);
+    margin-top: 40px;  /* Plus d'espace pour le bouton */
+}
+
+.saved-card-thumbnail.visible {
+    display: block;
+}
+
+.saved-card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;  /* Arrondi pour correspondre au conteneur */
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(166, 130, 69, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.saved-card-thumbnail:hover .thumbnail-overlay {
+    background: rgba(166, 130, 69, 0.8);
+    opacity: 1;
+}
+
+.thumbnail-overlay span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+}
+
+.saved-card-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(166, 130, 69, 0.6);
+}
+
+/* Bouton de suppression de la carte */
+.delete-card-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    color: var(--black);
+    border: 3px solid white;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 12px rgba(166, 130, 69, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.delete-card-btn:hover {
+    background: var(--black);
+    color: var(--gold);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 4px 15px rgba(166, 130, 69, 0.7);
+    border-color: var(--gold);
+}
+
+/* === OVERLAY TIRAGES SAUVEGARDÉS === */
+.saved-draws-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9998;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.saved-draws-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.saved-draws-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.saved-draws-container h2 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.saved-draws-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.saved-card-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--gold);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.saved-card-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(166, 130, 69, 0.3);
+}
+
+.saved-card-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.saved-card-name {
+    color: var(--gold);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.saved-card-date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.saved-draws-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.saved-draws-close:hover {
+    background: var(--white);
+    transform: rotate(90deg);
+}
+
+.clear-history-button {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.clear-history-button:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+.no-draws-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    padding: 40px;
+}
+
+/* === POPUP DE CONFIRMATION === */
+.confirm-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10001;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-popup.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.confirm-popup-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.confirm-popup-content h3 {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.confirm-popup-content p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.confirm-popup-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.confirm-button {
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-yes {
+    background: #ff6b6b;
+    color: white;
+}
+
+.confirm-yes:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+.confirm-no {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.confirm-no:hover {
+    background: #D4AF37;
+    transform: scale(1.05);
+}
+
 /* === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === */
 /* Fond semi-transparent qui couvre toute la page lors de l'affichage d'une carte */
 .card-overlay {
@@ -230,6 +524,15 @@ body {
     align-items: center;
     z-index: 9999;                      /* Au-dessus de tout */
     backdrop-filter: blur(5px);         /* Flou de l'arrière-plan */
+    padding: 20px;
+}
+
+/* Container pour la carte et les boutons */
+.card-display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .card-overlay.active {
@@ -358,21 +661,9 @@ body {
     padding: 0 15px;
 }
 
-/* Bouton de fermeture de la modal */
+/* Ancien bouton de fermeture - caché maintenant */
 .close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--gold);
-    color: var(--white);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;         /* Bouton circulaire */
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10000;             /* Au-dessus de tout dans la modal */
+    display: none;  /* On utilise maintenant le nouveau bouton en bas */
 }
 
 /* Animation du bouton de fermeture au survol */
@@ -380,6 +671,121 @@ body {
     background: var(--white);
     color: var(--gold);
     transform: rotate(90deg);   /* Rotation de 90 degrés au survol */
+}
+
+/* === NOUVELLE DISPOSITION DE LA CARTE AVEC BOUTONS === */
+/* Container principal pour l'affichage de la carte */
+.card-display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Zone des boutons d'action sous la carte */
+.card-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style commun pour les boutons d'action */
+.card-action-button {
+    background: linear-gradient(135deg, var(--gold), #8B6914);
+    color: var(--white);
+    border: 2px solid var(--gold);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(166, 130, 69, 0.3);
+}
+
+.card-action-button:hover {
+    background: var(--white);
+    color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(166, 130, 69, 0.5);
+}
+
+.card-action-button span {
+    font-size: 1.3rem;
+}
+
+/* Bouton pour afficher les informations */
+.info-button {
+    background: linear-gradient(135deg, #4A5568, #2D3748);
+    border-color: #4A5568;
+}
+
+.info-button:hover {
+    background: var(--white);
+    color: #4A5568;
+}
+
+/* Nouveau style pour le bouton de fermeture */
+.close-button-new {
+    background: linear-gradient(135deg, #E53E3E, #C53030);
+    border-color: #E53E3E;
+}
+
+.close-button-new:hover {
+    background: var(--white);
+    color: #E53E3E;
+}
+
+/* Panneau d'information de la carte */
+.card-info-panel {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 10001;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.card-info-panel.active {
+    display: block;
+}
+
+.card-info-content {
+    color: var(--white);
+}
+
+.card-info-content h3 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-info-content .keywords {
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.card-info-content .description {
+    line-height: 1.8;
+    font-size: 1rem;
+    color: var(--white);
 }
 
 /* === SECTION PROMOTIONNELLE POUR LA FORMATION === */
@@ -593,6 +999,94 @@ body {
     background: var(--gold);
     color: var(--black);
     box-shadow: 0 5px 20px rgba(166, 130, 69, 0.4);
+}
+
+/* === FOOTER === */
+.footer {
+    margin-top: 80px;
+    padding: 40px 20px 20px;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%);
+    border-top: 2px solid var(--gold);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    width: 80px;
+    height: 80px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    opacity: 1;
+}
+
+.footer-text {
+    margin-bottom: 25px;
+}
+
+.footer-title {
+    color: var(--gold);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.footer-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.footer-separator {
+    color: rgba(166, 130, 69, 0.5);
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(166, 130, 69, 0.2);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    margin: 5px 0;
+}
+
+.footer-credit {
+    color: rgba(166, 130, 69, 0.7);
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
 
 /* === STYLES RESPONSIVE POUR MOBILES ET TABLETTES === */

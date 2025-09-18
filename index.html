@@ -45,6 +45,15 @@
         <!-- Bouton principal pour déclencher le tirage aléatoire d'une carte -->
         <section class="draw-section">
             <button class="draw-button" id="drawButton">TIRE UNE CARTE ICI</button>
+
+            <!-- Miniature de la carte tirée -->
+            <div class="saved-card-thumbnail" id="savedCardThumbnail">
+                <button class="delete-card-btn" id="deleteCardBtn" title="Effacer la carte">✕</button>
+                <img id="thumbnailImage" src="" alt="Ta carte tirée">
+                <div class="thumbnail-overlay">
+                    <span>Clique pour revoir ta carte</span>
+                </div>
+            </div>
         </section>
 
         <!-- === SECTION PROMOTIONNELLE POUR LA FORMATION === -->
@@ -73,6 +82,62 @@
                 <img src="images/logo/IPHM_logo.jpg" alt="IPHM Accreditation" class="iphm-logo" id="iphmLogo">
             </div>
         </section>
+    </div>
+
+    <!-- === FOOTER === -->
+    <!-- Pied de page simple et élégant -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo/logo_LaTarotAcademie.png" alt="LA TAROT ACADÉMIE" class="footer-logo-img">
+            </div>
+
+            <div class="footer-text">
+                <p class="footer-title">LA TAROT ACADÉMIE</p>
+                <p class="footer-subtitle">Formation Professionnelle en Tarologie - Certifiée IPHM</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://www.latarotacademie.com" target="_blank" class="footer-link">
+                    Site Officiel
+                </a>
+                <span class="footer-separator">•</span>
+                <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" class="footer-link">
+                    Découvrir la Formation
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 LA TAROT ACADÉMIE - Tous droits réservés</p>
+                <p class="footer-credit">✨ Outil de tirage interactif pour les webinaires ✨</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- === SECTION TIRAGES SAUVEGARDÉS === -->
+    <!-- Section pour afficher le tirage sauvegardé -->
+    <div class="saved-draws-overlay" id="savedDrawsOverlay">
+        <div class="saved-draws-container">
+            <button class="saved-draws-close" id="savedDrawsClose">✕</button>
+            <h2>Ton Tirage du Jour</h2>
+            <div class="saved-draws-content" id="savedDrawsContent">
+                <!-- Les cartes sauvegardées seront affichées ici -->
+            </div>
+            <button class="clear-history-button" id="clearHistory">🗑️ Effacer le tirage</button>
+        </div>
+    </div>
+
+    <!-- === POPUP DE CONFIRMATION === -->
+    <!-- Popup pour confirmer l'effacement du tirage -->
+    <div class="confirm-popup" id="confirmPopup">
+        <div class="confirm-popup-content">
+            <h3>Confirmation</h3>
+            <p>Es-tu sûr(e) de vouloir effacer ton tirage actuel ?</p>
+            <div class="confirm-popup-buttons">
+                <button class="confirm-button confirm-yes" id="confirmYes">Oui, effacer</button>
+                <button class="confirm-button confirm-no" id="confirmNo">Non, garder</button>
+            </div>
+        </div>
     </div>
 
     <!-- === POPUP IPHM INFORMATION === -->
@@ -109,19 +174,35 @@
     <!-- === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === -->
     <!-- Fenêtre modale qui s'affiche lors du tirage avec animation 3D -->
     <div class="card-overlay" id="cardOverlay">
-        <!-- Bouton de fermeture de la modal -->
-        <button class="close-button" id="closeButton">✕</button>
-
         <!-- Container de la carte avec effet 3D -->
-        <div class="card-container">
-            <!-- Élément qui effectue la rotation 3D (flip) -->
-            <div class="card-flip" id="cardFlip">
-                <!-- Face arrière de la carte (dos doré) -->
-                <div class="card-back"></div>
-                <!-- Face avant de la carte (contenu dynamique) -->
-                <div class="card-face" id="cardFace">
-                    <!-- Le contenu de la carte sera inséré ici dynamiquement par JavaScript -->
+        <div class="card-display-container">
+            <div class="card-container">
+                <!-- Élément qui effectue la rotation 3D (flip) -->
+                <div class="card-flip" id="cardFlip">
+                    <!-- Face arrière de la carte (dos doré) -->
+                    <div class="card-back"></div>
+                    <!-- Face avant de la carte (contenu dynamique) -->
+                    <div class="card-face" id="cardFace">
+                        <!-- Le contenu de la carte sera inséré ici dynamiquement par JavaScript -->
+                    </div>
                 </div>
+            </div>
+
+            <!-- Boutons d'action sous la carte -->
+            <div class="card-actions">
+                <button class="card-action-button info-button" id="infoButton">
+                    <span>📖</span> Signification
+                </button>
+                <button class="card-action-button close-button-new" id="closeButton">
+                    <span>↩</span> Retour
+                </button>
+            </div>
+        </div>
+
+        <!-- Zone d'information sur la carte -->
+        <div class="card-info-panel" id="cardInfoPanel">
+            <div class="card-info-content" id="cardInfoContent">
+                <!-- Les informations de la carte seront insérées ici -->
             </div>
         </div>
     </div>

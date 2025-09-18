@@ -732,13 +732,15 @@ body {
 
 /* Nouveau style pour le bouton de fermeture */
 .close-button-new {
-    background: linear-gradient(135deg, #E53E3E, #C53030);
-    border-color: #E53E3E;
+    background: linear-gradient(135deg, #4B3621, #6B4E31);
+    border-color: #6B4E31;
+    color: var(--gold);
 }
 
 .close-button-new:hover {
-    background: var(--white);
-    color: #E53E3E;
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
 }
 
 /* Panneau d'information de la carte */
@@ -757,6 +759,33 @@ body {
     overflow-y: auto;
     z-index: 10001;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Bouton de fermeture pour le panneau d'information */
+.card-info-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #4B3621, #6B4E31);
+    border: 2px solid #6B4E31;
+    color: var(--gold);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10002;
+}
+
+.card-info-close:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+    transform: scale(1.1);
 }
 
 .card-info-panel.active {

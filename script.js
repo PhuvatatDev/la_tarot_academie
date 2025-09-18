@@ -591,6 +591,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Bouton pour afficher les informations de la carte
     document.getElementById('infoButton').addEventListener('click', toggleCardInfo);
 
+    // Bouton de fermeture du panneau d'information
+    const cardInfoClose = document.getElementById('cardInfoClose');
+    if (cardInfoClose) {
+        cardInfoClose.addEventListener('click', function() {
+            const panel = document.getElementById('cardInfoPanel');
+            if (panel) {
+                panel.classList.remove('active');
+            }
+        });
+    }
+
     // Miniature de la carte sauvegardée - réouvre la même modal
     const savedThumbnail = document.getElementById('savedCardThumbnail');
     if (savedThumbnail) {

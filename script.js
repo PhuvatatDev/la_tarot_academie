@@ -437,31 +437,37 @@ function toggleCardInfo() {
     const savedDraw = getSavedDraw();
 
     if (savedDraw) {
-        // Remplir le contenu du panneau d'information de manière sécurisée
-        const infoContent = document.getElementById('cardInfoContent');
+        // Si le panneau est déjà actif, on le ferme
+        if (infoPanel.classList.contains('active')) {
+            infoPanel.classList.remove('active');
+        } else {
+            // Sinon on le remplit et on l'affiche
+            // Remplir le contenu du panneau d'information de manière sécurisée
+            const infoContent = document.getElementById('cardInfoContent');
 
-        // Effacer le contenu précédent
-        infoContent.textContent = '';
+            // Effacer le contenu précédent
+            infoContent.textContent = '';
 
-        // Créer les éléments DOM de manière sécurisée (évite XSS)
-        const h3 = document.createElement('h3');
-        h3.textContent = savedDraw.name;
+            // Créer les éléments DOM de manière sécurisée (évite XSS)
+            const h3 = document.createElement('h3');
+            h3.textContent = savedDraw.name;
 
-        const keywordsDiv = document.createElement('div');
-        keywordsDiv.className = 'keywords';
-        keywordsDiv.textContent = savedDraw.keywords;
+            const keywordsDiv = document.createElement('div');
+            keywordsDiv.className = 'keywords';
+            keywordsDiv.textContent = savedDraw.keywords;
 
-        const descriptionDiv = document.createElement('div');
-        descriptionDiv.className = 'description';
-        descriptionDiv.textContent = savedDraw.description || 'Description non disponible';
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.className = 'description';
+            descriptionDiv.textContent = savedDraw.description || 'Description non disponible';
 
-        // Ajouter les éléments au conteneur
-        infoContent.appendChild(h3);
-        infoContent.appendChild(keywordsDiv);
-        infoContent.appendChild(descriptionDiv);
+            // Ajouter les éléments au conteneur
+            infoContent.appendChild(h3);
+            infoContent.appendChild(keywordsDiv);
+            infoContent.appendChild(descriptionDiv);
 
-        // Toggle l'affichage du panneau
-        infoPanel.classList.toggle('active');
+            // Afficher le panneau
+            infoPanel.classList.add('active');
+        }
     }
 }
 
@@ -591,16 +597,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Bouton pour afficher les informations de la carte
     document.getElementById('infoButton').addEventListener('click', toggleCardInfo);
 
-    // Bouton de fermeture du panneau d'information
-    const cardInfoClose = document.getElementById('cardInfoClose');
-    if (cardInfoClose) {
-        cardInfoClose.addEventListener('click', function() {
+    // Bouton de fermeture du panneau d'information - utilise la délégation d'événements
+    document.addEventListener('click', function(e) {
+        // Si on clique sur le bouton de fermeture du panneau d'info
+        if (e.target && e.target.id === 'cardInfoClose') {
             const panel = document.getElementById('cardInfoPanel');
             if (panel) {
                 panel.classList.remove('active');
             }
-        });
-    }
+        }
+    });
 
     // Miniature de la carte sauvegardée - réouvre la même modal
     const savedThumbnail = document.getElementById('savedCardThumbnail');

@@ -4,6 +4,21 @@
     <!-- === META TAGS ET CONFIGURATION DE LA PAGE === -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- === CONTENT SECURITY POLICY === -->
+    <!-- Protection contre les attaques XSS et injection de code -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   img-src 'self' data: https://raw.githubusercontent.com;
+                   style-src 'self' 'unsafe-inline';
+                   script-src 'self';
+                   connect-src 'self';
+                   font-src 'self';
+                   object-src 'none';
+                   base-uri 'self';
+                   form-action 'self';
+                   frame-ancestors 'none';">
+
     <title>La Tarot Académie - Tirage de Tarot Interactif</title>
 
     <!-- === FEUILLES DE STYLE === -->
@@ -74,7 +89,7 @@
                 <strong>Possibilité de t'inscrire dès maintenant à la nouvelle cohorte !</strong>
             </p>
             <!-- Bouton CTA (Call-To-Action) pour la formation -->
-            <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" class="cta-button">Découvre toute la formation ici</a>
+            <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" rel="noopener noreferrer" class="cta-button">Découvre toute la formation ici</a>
 
             <!-- Logo IPHM de certification -->
             <div class="iphm-logo-container">
@@ -98,11 +113,11 @@
             </div>
 
             <div class="footer-links">
-                <a href="https://www.latarotacademie.com" target="_blank" class="footer-link">
+                <a href="https://www.latarotacademie.com" target="_blank" rel="noopener noreferrer" class="footer-link">
                     Site Officiel
                 </a>
                 <span class="footer-separator">•</span>
-                <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" class="footer-link">
+                <a href="https://www.latarotacademie.com/formation-accompagnement-formation-en-tarologie-professionnelle" target="_blank" rel="noopener noreferrer" class="footer-link">
                     Découvrir la Formation
                 </a>
             </div>
@@ -163,7 +178,7 @@
 
                 <!-- Lien vers le site IPHM -->
                 <div class="iphm-website-link">
-                    <a href="https://www.iphm.co.uk/" target="_blank" class="iphm-link">
+                    <a href="https://www.iphm.co.uk/" target="_blank" rel="noopener noreferrer" class="iphm-link">
                         Visiter le site officiel IPHM →
                     </a>
                 </div>

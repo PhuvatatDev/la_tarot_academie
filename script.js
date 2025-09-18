@@ -348,7 +348,13 @@ function drawCard() {
 
     // Démarre l'animation de mélange (pulsation du bouton)
     button.classList.add('shuffling');
-    button.innerHTML = '<span class="spinning-star">✦</span>';  // Étoile qui tourne
+
+    // Création sécurisée de l'élément (évite XSS)
+    button.textContent = ''; // Efface le contenu existant
+    const star = document.createElement('span');
+    star.className = 'spinning-star';
+    star.textContent = '✦';
+    button.appendChild(star);
 
     // Délai de 1.5s pour l'effet de suspense
     setTimeout(() => {
@@ -415,13 +421,28 @@ function toggleCardInfo() {
     const savedDraw = getSavedDraw();
 
     if (savedDraw) {
-        // Remplir le contenu du panneau d'information
+        // Remplir le contenu du panneau d'information de manière sécurisée
         const infoContent = document.getElementById('cardInfoContent');
-        infoContent.innerHTML = `
-            <h3>${savedDraw.name}</h3>
-            <div class="keywords">${savedDraw.keywords}</div>
-            <div class="description">${savedDraw.description || 'Description non disponible'}</div>
-        `;
+
+        // Effacer le contenu précédent
+        infoContent.textContent = '';
+
+        // Créer les éléments DOM de manière sécurisée (évite XSS)
+        const h3 = document.createElement('h3');
+        h3.textContent = savedDraw.name;
+
+        const keywordsDiv = document.createElement('div');
+        keywordsDiv.className = 'keywords';
+        keywordsDiv.textContent = savedDraw.keywords;
+
+        const descriptionDiv = document.createElement('div');
+        descriptionDiv.className = 'description';
+        descriptionDiv.textContent = savedDraw.description || 'Description non disponible';
+
+        // Ajouter les éléments au conteneur
+        infoContent.appendChild(h3);
+        infoContent.appendChild(keywordsDiv);
+        infoContent.appendChild(descriptionDiv);
 
         // Toggle l'affichage du panneau
         infoPanel.classList.toggle('active');

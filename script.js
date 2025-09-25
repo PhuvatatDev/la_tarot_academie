@@ -80,7 +80,7 @@ const tarotDeck = [
         type: "major",
         keywords: "Courage – Maîtrise de soi – Patience",
         description: "Ici, la carte de la Force t'invite à faire face aux défis avec courage et calme. Elle t'encourage à puiser dans tes ressources intérieures, à maîtriser tes émotions et à avancer avec confiance. C'est un appel à la patience, à la persévérance et à l'endurance, car c'est souvent dans la douceur et la constance que se trouvent les clés pour surmonter les obstacles et réussir.",
-        image: "11-la-force.png"
+        image: "08-la-force.png"
     },
     {
         id: 9,
@@ -104,7 +104,7 @@ const tarotDeck = [
         type: "major",
         keywords: "Équilibre – Vérité – Responsabilité",
         description: "Ici, la carte de la Justice t'invite à faire preuve d'honnêteté et à assumer pleinement tes choix et actions. Elle t'encourage à rétablir l'équilibre, que ce soit dans ta vie intérieure ou dans tes situations extérieures. C'est un appel à réfléchir, à peser le pour et le contre, et à prendre la responsabilité des conséquences de tes décisions. La Justice te rappelle de trancher avec clarté et rigueur, tout en restant aligné(e) avec tes principes d'équité et de vérité.",
-        image: "08-la-justice.png"
+        image: "11-la-justice.png"
     },
     {
         id: 12,

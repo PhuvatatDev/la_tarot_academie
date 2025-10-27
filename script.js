@@ -578,6 +578,194 @@ function hideConfirmPopup() {
     }
 }
 
+// === EFFET 3D TILT AU SURVOL (Desktop + Mobile) ===
+// Applique un effet d'inclinaison 3D basé sur la position de la souris ou du doigt
+function initCardTilt() {
+    const cardFlip = document.getElementById('cardFlip');
+    const cardContainer = document.querySelector('.card-container');
+
+    if (!cardFlip || !cardContainer) return;
+
+    // Intensité de l'effet (plus élevée pour effet très visible)
+    const tiltIntensity = 30;
+
+    // Fonction pour appliquer l'effet tilt
+    function applyTilt(clientX, clientY) {
+        // Ne pas appliquer l'effet si la carte n'est pas retournée
+        if (!cardFlip.classList.contains('flipped')) return;
+
+        // Récupère les dimensions et position du container
+        const rect = cardContainer.getBoundingClientRect();
+
+        // Calcule la position par rapport au centre (0 à 1)
+        const x = (clientX - rect.left) / rect.width;
+        const y = (clientY - rect.top) / rect.height;
+
+        // Convertit en valeurs centrées (-0.5 à 0.5)
+        const centerX = x - 0.5;
+        const centerY = y - 0.5;
+
+        // Calcule les rotations
+        const rotateY = centerX * tiltIntensity;
+        const rotateX = -centerY * tiltIntensity;
+
+        // Applique la transformation 3D
+        cardFlip.style.transform = `
+            rotateY(${180 + rotateY}deg)
+            rotateX(${rotateX}deg)
+            scale(1.02)
+        `;
+
+        cardFlip.style.transition = 'transform 0.1s ease-out';
+    }
+
+    // Fonction pour réinitialiser
+    function resetTilt() {
+        if (!cardFlip.classList.contains('flipped')) return;
+        cardFlip.style.transform = 'rotateY(180deg)';
+        cardFlip.style.transition = 'transform 0.3s ease';
+    }
+
+    // === DESKTOP : Souris ===
+    cardContainer.addEventListener('mousemove', function(e) {
+        applyTilt(e.clientX, e.clientY);
+    });
+
+    cardContainer.addEventListener('mouseleave', resetTilt);
+
+    // === MOBILE : Touch ===
+    cardContainer.addEventListener('touchmove', function(e) {
+        e.preventDefault(); // Empêche le scroll pendant le touch
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            applyTilt(touch.clientX, touch.clientY);
+        }
+    });
+
+    cardContainer.addEventListener('touchend', resetTilt);
+}
+
+// === EFFET 3D TILT MAGNÉTIQUE POUR LE BOUTON DE TIRAGE ===
+// Applique un effet magnétique + tilt intensifié au survol (desktop + mobile)
+function initButtonTilt() {
+    const button = document.getElementById('drawButton');
+
+    if (!button) return;
+
+    // Paramètres d'effet
+    const magneticRange = 600;        // Zone d'influence magnétique (pixels) - Large
+    const magneticIntensity = 6;      // Intensité de l'effet magnétique - Subtile
+    const hoverIntensity = 15;        // Intensité au survol direct - Modérée
+
+    let isHovering = false;           // Track si la souris est sur le bouton
+
+    // Fonction pour calculer la distance entre deux points
+    function getDistance(x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
+    // Fonction pour appliquer l'effet (magnétique OU hover)
+    function applyEffect(clientX, clientY) {
+        const rect = button.getBoundingClientRect();
+
+        // Centre du bouton
+        const buttonCenterX = rect.left + rect.width / 2;
+        const buttonCenterY = rect.top + rect.height / 2;
+
+        // Distance entre la souris et le centre du bouton
+        const distance = getDistance(clientX, clientY, buttonCenterX, buttonCenterY);
+
+        // === CAS 1: Souris SUR le bouton (hover intense) ===
+        if (isHovering) {
+            const x = (clientX - rect.left) / rect.width;
+            const y = (clientY - rect.top) / rect.height;
+
+            const centerX = x - 0.5;
+            const centerY = y - 0.5;
+
+            const rotateY = centerX * hoverIntensity;
+            const rotateX = -centerY * hoverIntensity;
+
+            button.style.transform = `
+                perspective(1000px)
+                rotateY(${rotateY}deg)
+                rotateX(${rotateX}deg)
+                translateY(-3px)
+                scale(1.05)
+            `;
+            button.style.transition = 'transform 0.1s ease-out';
+        }
+        // === CAS 2: Souris PROCHE (effet magnétique) ===
+        else if (distance < magneticRange) {
+            // Calcule l'angle vers la souris
+            const angleX = (clientX - buttonCenterX) / rect.width;
+            const angleY = (clientY - buttonCenterY) / rect.height;
+
+            // Intensité basée sur la distance (plus proche = plus fort)
+            const distanceFactor = 1 - (distance / magneticRange);
+            const intensity = magneticIntensity * distanceFactor;
+
+            const rotateY = angleX * intensity;
+            const rotateX = -angleY * intensity;
+
+            button.style.transform = `
+                perspective(1000px)
+                rotateY(${rotateY}deg)
+                rotateX(${rotateX}deg)
+                scale(1.01)
+            `;
+            button.style.transition = 'transform 0.2s ease-out';
+        }
+        // === CAS 3: Souris LOIN (reset) ===
+        else {
+            button.style.transform = '';
+            button.style.transition = 'transform 0.4s ease';
+        }
+    }
+
+    // Fonction pour réinitialiser
+    function resetTilt() {
+        isHovering = false;
+        button.style.transform = '';
+        button.style.transition = 'transform 0.3s ease';
+    }
+
+    // === DESKTOP : Effet magnétique global ===
+    document.addEventListener('mousemove', function(e) {
+        applyEffect(e.clientX, e.clientY);
+    });
+
+    // === DESKTOP : Détection hover ===
+    button.addEventListener('mouseenter', function() {
+        isHovering = true;
+    });
+
+    button.addEventListener('mouseleave', function() {
+        isHovering = false;
+    });
+
+    // === MOBILE : Touch avec effet magnétique ===
+    document.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+
+            // Vérifie si le touch est sur le bouton
+            const rect = button.getBoundingClientRect();
+            const isOnButton = (
+                touch.clientX >= rect.left &&
+                touch.clientX <= rect.right &&
+                touch.clientY >= rect.top &&
+                touch.clientY <= rect.bottom
+            );
+
+            isHovering = isOnButton;
+            applyEffect(touch.clientX, touch.clientY);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', resetTilt);
+}
+
 // === INITIALISATION DE L'APPLICATION ===
 // Point d'entrée principal - s'exécute quand le DOM est complètement chargé
 document.addEventListener('DOMContentLoaded', function() {
@@ -586,6 +774,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Vérifie s'il y a un tirage sauvegardé au chargement
     updateHistoryButton();
+
+    // Active l'effet 3D tilt au survol des cartes
+    initCardTilt();
+
+    // Active l'effet 3D tilt pour le bouton de tirage
+    initButtonTilt();
 
     // === GESTIONNAIRES D'ÉVÉNEMENTS ===
     // Bouton de tirage de carte

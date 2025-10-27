@@ -394,6 +394,10 @@ function drawCard() {
         // Active la modal avec animation de fondu
         overlay.classList.add('active');
 
+        // Nettoie les styles inline avant l'animation pour éviter les conflits
+        cardFlip.style.transform = '';
+        cardFlip.style.transition = '';
+
         // Déclenche l'animation 3D de retournement après 100ms
         setTimeout(() => {
             cardFlip.classList.add('flipped');
@@ -420,6 +424,10 @@ function closeCard() {
     if (infoPanel) {
         infoPanel.classList.remove('active');
     }
+
+    // Nettoie les styles inline de l'effet 3D pour permettre l'animation CSS
+    cardFlip.style.transform = '';
+    cardFlip.style.transition = '';
 
     // Retourne d'abord la carte (animation inverse)
     cardFlip.classList.remove('flipped');

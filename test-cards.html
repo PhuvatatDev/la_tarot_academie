@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests des Cartes - LA TAROT ACADÉMIE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #A68245;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --green: #4CAF50;
+            --red: #f44336;
+            --orange: #ff9800;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0A0A0A 100%);
+            color: var(--white);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(166, 130, 69, 0.1);
+            border-radius: 15px;
+            border: 2px solid var(--gold);
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Test Results Section */
+        .test-results {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .test-results h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+        }
+
+        .test-item.pass {
+            border-left-color: var(--green);
+        }
+
+        .test-item.fail {
+            border-left-color: var(--red);
+        }
+
+        .test-item.warning {
+            border-left-color: var(--orange);
+        }
+
+        .test-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .test-content {
+            flex: 1;
+        }
+
+        .test-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .test-details {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Statistics */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(166, 130, 69, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Cards Grid */
+        .cards-section {
+            margin-top: 40px;
+        }
+
+        .cards-section h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card-test-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card-test-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(166, 130, 69, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-test-item.error {
+            border-color: var(--red);
+        }
+
+        .card-id {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .card-image-container {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .card-keywords {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .card-status {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .card-status.ok {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--green);
+        }
+
+        .card-status.error {
+            background: rgba(244, 67, 54, 0.2);
+            color: var(--red);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-card-image {
+            width: 300px;
+            max-width: 100%;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .modal-card-name {
+            color: var(--gold);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-card-keywords {
+            color: var(--gold);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .modal-card-description {
+            color: var(--white);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .modal-card-filename {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Buttons */
+        .button {
+            background: linear-gradient(135deg, var(--gold), #8B6914);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(166, 130, 69, 0.5);
+        }
+
+        .button-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧪 Tests des Cartes de Tarot</h1>
+            <p class="subtitle">Vérification de l'intégrité des données et des images</p>
+        </header>
+
+        <!-- Test Results -->
+        <div class="test-results">
+            <h2>📊 Résultats des Tests Automatiques</h2>
+            <div id="testResultsContainer"></div>
+
+            <!-- Statistics -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCards">-</div>
+                    <div class="stat-label">Cartes Totales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="passedTests">-</div>
+                    <div class="stat-label">Tests Réussis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="failedTests">-</div>
+                    <div class="stat-label">Tests Échoués</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="successRate">-</div>
+                    <div class="stat-label">Taux de Réussite</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="button" onclick="runTests()">🔄 Relancer les Tests</button>
+                <button class="button" onclick="testRandomDraw()">🎲 Tester le Tirage Aléatoire</button>
+            </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-section">
+            <h2>🎴 Grille des 22 Arcanes Majeurs</h2>
+            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                Cliquez sur une carte pour voir tous ses détails
+            </p>
+            <div class="cards-grid" id="cardsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Card Details -->
+    <div class="modal" id="cardModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Load the main script to access tarotDeck -->
+    <script src="script.js"></script>
+
+    <script>
+        // Test Functions
+        let testResults = [];
+
+        function addTest(passed, title, details = '') {
+            testResults.push({ passed, title, details });
+        }
+
+        function runTests() {
+            testResults = [];
+
+            // Test 1: Vérifier que tarotDeck existe
+            if (typeof tarotDeck !== 'undefined') {
+                addTest(true, 'tarotDeck est défini', 'Le tableau des cartes est accessible');
+            } else {
+                addTest(false, 'tarotDeck est introuvable', 'Le fichier script.js n\'a pas chargé correctement');
+                displayResults();
+                return;
+            }
+
+            // Test 2: Vérifier qu'il y a exactement 22 cartes
+            if (tarotDeck.length === 22) {
+                addTest(true, '22 Arcanes Majeurs présents', `Le jeu contient bien ${tarotDeck.length} cartes`);
+            } else {
+                addTest(false, 'Nombre de cartes incorrect', `Attendu: 22, Trouvé: ${tarotDeck.length}`);
+            }
+
+            // Test 3: Vérifier que tous les IDs sont présents de 0 à 21
+            const expectedIds = Array.from({length: 22}, (_, i) => i);
+            const actualIds = tarotDeck.map(card => card.id).sort((a, b) => a - b);
+            const idsMatch = JSON.stringify(expectedIds) === JSON.stringify(actualIds);
+
+            if (idsMatch) {
+                addTest(true, 'IDs continus de 0 à 21', 'Tous les IDs sont présents et uniques');
+            } else {
+                const missing = expectedIds.filter(id => !actualIds.includes(id));
+                const duplicates = actualIds.filter((id, index) => actualIds.indexOf(id) !== index);
+                let details = '';
+                if (missing.length > 0) details += `IDs manquants: ${missing.join(', ')}. `;
+                if (duplicates.length > 0) details += `IDs dupliqués: ${duplicates.join(', ')}`;
+                addTest(false, 'Problème avec les IDs', details);
+            }
+
+            // Test 4: Vérifier que chaque carte a toutes les propriétés requises
+            const requiredProps = ['id', 'name', 'type', 'keywords', 'description', 'image'];
+            let allPropsValid = true;
+            let missingPropsDetails = [];
+
+            tarotDeck.forEach(card => {
+                const missingProps = requiredProps.filter(prop => !card.hasOwnProperty(prop) || card[prop] === '');
+                if (missingProps.length > 0) {
+                    allPropsValid = false;
+                    missingPropsDetails.push(`Carte ${card.id} (${card.name || 'sans nom'}): ${missingProps.join(', ')}`);
+                }
+            });
+
+            if (allPropsValid) {
+                addTest(true, 'Toutes les propriétés présentes', 'Chaque carte a: id, name, type, keywords, description, image');
+            } else {
+                addTest(false, 'Propriétés manquantes', missingPropsDetails.join(' | '));
+            }
+
+            // Test 5: Vérifier que tous les types sont "major"
+            const allMajor = tarotDeck.every(card => card.type === 'major');
+            if (allMajor) {
+                addTest(true, 'Tous les types sont "major"', 'Type cohérent pour tous les Arcanes Majeurs');
+            } else {
+                const wrongTypes = tarotDeck.filter(card => card.type !== 'major').map(c => `${c.name}: ${c.type}`);
+                addTest(false, 'Types incorrects', wrongTypes.join(', '));
+            }
+
+            // Test 6: Vérifier que les noms sont uniques
+            const names = tarotDeck.map(card => card.name);
+            const uniqueNames = new Set(names);
+            if (names.length === uniqueNames.size) {
+                addTest(true, 'Noms de cartes uniques', 'Aucun doublon détecté');
+            } else {
+                const duplicateNames = names.filter((name, index) => names.indexOf(name) !== index);
+                addTest(false, 'Noms dupliqués', duplicateNames.join(', '));
+            }
+
+            // Test 7: Vérifier que toutes les descriptions sont suffisamment longues
+            const minDescLength = 50;
+            const shortDescs = tarotDeck.filter(card => card.description.length < minDescLength);
+            if (shortDescs.length === 0) {
+                addTest(true, 'Descriptions complètes', `Toutes les descriptions ont au moins ${minDescLength} caractères`);
+            } else {
+                const shortDescNames = shortDescs.map(c => `${c.name} (${c.description.length} chars)`);
+                addTest(false, 'Descriptions trop courtes', shortDescNames.join(', '));
+            }
+
+            // Test 8: Vérifier que les keywords ne sont pas vides
+            const emptyKeywords = tarotDeck.filter(card => !card.keywords || card.keywords.trim() === '');
+            if (emptyKeywords.length === 0) {
+                addTest(true, 'Mots-clés présents', 'Toutes les cartes ont des mots-clés');
+            } else {
+                const emptyKeywordNames = emptyKeywords.map(c => c.name);
+                addTest(false, 'Mots-clés manquants', emptyKeywordNames.join(', '));
+            }
+
+            // Test 9: Vérifier les noms de fichiers d'images
+            const invalidImages = [];
+            tarotDeck.forEach(card => {
+                if (!card.image || !card.image.endsWith('.png')) {
+                    invalidImages.push(`${card.name}: ${card.image || 'vide'}`);
+                }
+            });
+
+            if (invalidImages.length === 0) {
+                addTest(true, 'Noms de fichiers d\'images valides', 'Toutes les images ont une extension .png');
+            } else {
+                addTest(false, 'Problème avec les noms d\'images', invalidImages.join(' | '));
+            }
+
+            displayResults();
+            displayCards();
+        }
+
+        function displayResults() {
+            const container = document.getElementById('testResultsContainer');
+            container.innerHTML = '';
+
+            const passed = testResults.filter(t => t.passed).length;
+            const failed = testResults.filter(t => !t.passed).length;
+            const total = testResults.length;
+            const rate = total > 0 ? ((passed / total) * 100).toFixed(1) : 0;
+
+            // Update statistics
+            document.getElementById('totalCards').textContent = tarotDeck ? tarotDeck.length : 0;
+            document.getElementById('passedTests').textContent = passed;
+            document.getElementById('failedTests').textContent = failed;
+            document.getElementById('successRate').textContent = rate + '%';
+
+            // Display test items
+            testResults.forEach(test => {
+                const testItem = document.createElement('div');
+                testItem.className = `test-item ${test.passed ? 'pass' : 'fail'}`;
+
+                testItem.innerHTML = `
+                    <div class="test-icon">${test.passed ? '✅' : '❌'}</div>
+                    <div class="test-content">
+                        <div class="test-title">${test.title}</div>
+                        ${test.details ? `<div class="test-details">${test.details}</div>` : ''}
+                    </div>
+                `;
+
+                container.appendChild(testItem);
+            });
+        }
+
+        function displayCards() {
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
+
+            if (!tarotDeck) return;
+
+            tarotDeck.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card-test-item';
+
+                // Check for errors
+                const hasErrors = !card.name || !card.keywords || !card.description || !card.image;
+                if (hasErrors) {
+                    cardElement.classList.add('error');
+                }
+
+                const urls = getImageUrl(card, '150w');
+
+                cardElement.innerHTML = `
+                    <div class="card-id">${card.id}</div>
+                    <div class="card-image-container">
+                        <img src="${urls.webp}"
+                             onerror="this.onerror=null; this.src='${urls.fallback}';"
+                             alt="${card.name || 'Carte sans nom'}">
+                    </div>
+                    <div class="card-name">${card.name || '❌ Sans nom'}</div>
+                    <div class="card-keywords">${card.keywords || '❌ Sans mots-clés'}</div>
+                    <div class="card-status ${hasErrors ? 'error' : 'ok'}">
+                        ${hasErrors ? '⚠️ Données incomplètes' : '✓ Données complètes'}
+                    </div>
+                `;
+
+                cardElement.onclick = () => showCardDetails(card);
+                grid.appendChild(cardElement);
+            });
+        }
+
+        function showCardDetails(card) {
+            const modal = document.getElementById('cardModal');
+            const content = document.getElementById('modalContent');
+
+            const urls = getImageUrl(card, '300w');
+
+            content.innerHTML = `
+                <img src="${urls.webp}"
+                     onerror="this.onerror=null; this.src='${urls.fallback}';"
+                     class="modal-card-image"
+                     alt="${card.name}">
+                <h2 class="modal-card-name">${card.name}</h2>
+                <div class="modal-card-keywords">${card.keywords}</div>
+                <div class="modal-card-description">${card.description}</div>
+                <div class="modal-card-filename">
+                    <strong>ID:</strong> ${card.id}<br>
+                    <strong>Type:</strong> ${card.type}<br>
+                    <strong>Image:</strong> ${card.image}<br>
+                    <strong>Description length:</strong> ${card.description.length} caractères
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('cardModal').classList.remove('active');
+        }
+
+        function testRandomDraw() {
+            if (!randomizer || !tarotDeck) {
+                alert('Le système de randomisation n\'est pas disponible');
+                return;
+            }
+
+            const draws = 100;
+            const cardCounts = {};
+
+            // Initialize counts
+            tarotDeck.forEach(card => {
+                cardCounts[card.id] = 0;
+            });
+
+            // Draw cards
+            for (let i = 0; i < draws; i++) {
+                const card = randomizer.getRandomCard();
+                cardCounts[card.id]++;
+            }
+
+            // Check distribution
+            const missing = Object.entries(cardCounts).filter(([id, count]) => count === 0);
+            const results = Object.entries(cardCounts)
+                .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                .map(([id, count]) => {
+                    const card = tarotDeck.find(c => c.id === parseInt(id));
+                    return `${card.name}: ${count} fois (${(count/draws*100).toFixed(1)}%)`;
+                })
+                .join('\n');
+
+            alert(`🎲 Test de ${draws} tirages aléatoires:\n\n${results}\n\n${missing.length === 0 ? '✅ Toutes les cartes ont été tirées au moins une fois' : '⚠️ Cartes non tirées: ' + missing.map(([id]) => tarotDeck.find(c => c.id === parseInt(id)).name).join(', ')}`);
+        }
+
+        // Close modal on background click
+        document.getElementById('cardModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Run tests on load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(runTests, 500);
+        });
+    </script>
+</body>
+</html>

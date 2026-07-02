@@ -22,12 +22,50 @@
     <title>La Tarot Académie - Tirage de Tarot Interactif</title>
 
     <!-- === FEUILLES DE STYLE === -->
+    <!-- Tokens de marque (couleurs DS + polices Cormorant/Inter/Caveat) chargés en premier -->
+    <link rel="stylesheet" href="styles/tokens.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- === EFFET VISUEL : PARTICULES D'ARRIÈRE-PLAN === -->
-    <!-- Container pour les particules dorées animées qui créent l'ambiance mystique -->
-    <div class="particles-container" id="particles"></div>
+    <!-- === DÉCOR DE FOND : BLOBS BORDEAUX FLOUS === -->
+    <!-- Reprend l'ambiance de la homepage du site (blob-connector.svg rendu flou/transparent) -->
+    <div class="blob-background" aria-hidden="true">
+        <img src="images/blobs/blob-connector.svg" alt="" class="blob blob--top-left">
+        <img src="images/blobs/blob-connector.svg" alt="" class="blob blob--bottom-right">
+    </div>
+
+    <!-- === ÉTOILES EN FOND DE PAGE (dispersées) === -->
+    <!-- ✧ contour par défaut, ✦ plein quand le bouton perle est survolé (cf. body:has en CSS) -->
+    <div class="page-stars" aria-hidden="true">
+        <span class="page-star" style="top:6%;left:12%;font-size:14px;opacity:.5;transform:rotate(12deg)"></span>
+        <span class="page-star" style="top:9%;left:78%;font-size:20px;opacity:.35;transform:rotate(-20deg)"></span>
+        <span class="page-star" style="top:14%;left:44%;font-size:11px;opacity:.6;transform:rotate(40deg)"></span>
+        <span class="page-star" style="top:18%;left:88%;font-size:16px;opacity:.4;transform:rotate(8deg)"></span>
+        <span class="page-star" style="top:22%;left:25%;font-size:22px;opacity:.3;transform:rotate(-14deg)"></span>
+        <span class="page-star" style="top:27%;left:63%;font-size:13px;opacity:.55;transform:rotate(25deg)"></span>
+        <span class="page-star" style="top:31%;left:6%;font-size:18px;opacity:.35;transform:rotate(-30deg)"></span>
+        <span class="page-star" style="top:35%;left:92%;font-size:12px;opacity:.5;transform:rotate(15deg)"></span>
+        <span class="page-star" style="top:40%;left:38%;font-size:24px;opacity:.28;transform:rotate(-8deg)"></span>
+        <span class="page-star" style="top:44%;left:71%;font-size:15px;opacity:.45;transform:rotate(33deg)"></span>
+        <span class="page-star" style="top:49%;left:17%;font-size:13px;opacity:.55;transform:rotate(-22deg)"></span>
+        <span class="page-star" style="top:53%;left:55%;font-size:19px;opacity:.35;transform:rotate(10deg)"></span>
+        <span class="page-star" style="top:57%;left:84%;font-size:11px;opacity:.6;transform:rotate(-16deg)"></span>
+        <span class="page-star" style="top:61%;left:30%;font-size:21px;opacity:.3;transform:rotate(28deg)"></span>
+        <span class="page-star" style="top:66%;left:66%;font-size:14px;opacity:.5;transform:rotate(-35deg)"></span>
+        <span class="page-star" style="top:70%;left:9%;font-size:17px;opacity:.4;transform:rotate(18deg)"></span>
+        <span class="page-star" style="top:74%;left:48%;font-size:12px;opacity:.55;transform:rotate(-12deg)"></span>
+        <span class="page-star" style="top:78%;left:90%;font-size:23px;opacity:.28;transform:rotate(6deg)"></span>
+        <span class="page-star" style="top:82%;left:22%;font-size:15px;opacity:.45;transform:rotate(-26deg)"></span>
+        <span class="page-star" style="top:86%;left:74%;font-size:13px;opacity:.55;transform:rotate(30deg)"></span>
+        <span class="page-star" style="top:90%;left:40%;font-size:18px;opacity:.35;transform:rotate(-18deg)"></span>
+        <span class="page-star" style="top:93%;left:60%;font-size:11px;opacity:.6;transform:rotate(14deg)"></span>
+        <span class="page-star" style="top:12%;left:60%;font-size:12px;opacity:.5;transform:rotate(-10deg)"></span>
+        <span class="page-star" style="top:47%;left:93%;font-size:16px;opacity:.4;transform:rotate(22deg)"></span>
+        <span class="page-star" style="top:63%;left:45%;font-size:12px;opacity:.5;transform:rotate(-28deg)"></span>
+        <span class="page-star" style="top:84%;left:52%;font-size:14px;opacity:.45;transform:rotate(16deg)"></span>
+        <span class="page-star" style="top:25%;left:50%;font-size:12px;opacity:.5;transform:rotate(-6deg)"></span>
+        <span class="page-star" style="top:72%;left:84%;font-size:15px;opacity:.4;transform:rotate(24deg)"></span>
+    </div>
 
     <!-- === CONTAINER PRINCIPAL DE L'APPLICATION === -->
     <!-- Contient tout le contenu visible de la page (z-index plus élevé que les particules) -->
@@ -36,11 +74,8 @@
         <!-- Logo et sous-titre de la Tarot Académie -->
         <header class="header">
             <div class="header-content">
-                <img src="images/logo/logo_LaTarotAcademie.png" alt="La Tarot Académie Logo" class="academie-logo">
-                <div class="header-text">
-                    <h1 class="logo">LA TAROT ACADÉMIE</h1>
-                    <p class="subtitle">Formation de Tarologie Professionnelle Certifiée par l'IPHM</p>
-                </div>
+                <img src="images/logo/logo-la-tarot-academie-clean.webp" alt="La Tarot Académie" class="academie-logo">
+                <h1 class="logo-visually-hidden">La Tarot Académie</h1>
             </div>
         </header>
 
@@ -51,7 +86,7 @@
             <p>
                 Tu vas utiliser ici un outil unique : un générateur de tirage de cartes du Tarot Rider-Waite Smith.
                 Chaque tirage est personnel et différent. Pour que l'expérience soit la plus juste possible,
-                suis attentivement mes instructions tout au long du webinaire. Clique sur le bouton pour révéler
+                suis attentivement mes instructions tout au long du workshop. Clique sur le bouton pour révéler
                 ta carte et découvre le message qu'elle a à te transmettre aujourd'hui.
             </p>
         </section>
@@ -59,42 +94,54 @@
         <!-- === ZONE DE TIRAGE INTERACTIF === -->
         <!-- Bouton principal pour déclencher le tirage aléatoire d'une carte -->
         <section class="draw-section">
-            <button class="draw-button" id="drawButton">TIRE UNE CARTE ICI</button>
+            <button class="pearl-cta" id="drawButton">
+                <span class="pearl-wrap">
+                    <span class="pearl-label">
+                        <span class="pearl-icon-idle" aria-hidden="true">✧</span>
+                        <span class="pearl-icon-hover" aria-hidden="true">✦</span>
+                        TIRE UNE CARTE ICI
+                    </span>
+                </span>
+            </button>
 
-            <!-- Miniature de la carte tirée -->
-            <div class="saved-card-thumbnail" id="savedCardThumbnail">
-                <button class="delete-card-btn" id="deleteCardBtn" title="Effacer la carte">✕</button>
-                <img id="thumbnailImage" src="" alt="Ta carte tirée">
-                <div class="thumbnail-overlay">
-                    <span>Clique pour revoir ta carte</span>
+            <!-- === AFFICHAGE DE LA CARTE (inline, 2 colonnes : carte + signification) === -->
+            <!-- S'affiche directement dans le flux de la page au tirage, avec animation 3D -->
+            <div class="card-overlay" id="cardOverlay">
+                <div class="card-display-container">
+                    <!-- Colonne 1 : la carte -->
+                    <div class="card-container">
+                        <!-- Élément qui effectue la rotation 3D (flip) -->
+                        <div class="card-flip" id="cardFlip">
+                            <!-- Face arrière de la carte (dos doré) -->
+                            <div class="card-back"></div>
+                            <!-- Face avant de la carte (contenu dynamique) -->
+                            <div class="card-face" id="cardFace">
+                                <!-- Le contenu de la carte sera inséré ici dynamiquement par JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colonne 2 : signification + mots-clés (remplie au tirage) -->
+                    <div class="card-info-inline" id="cardInfoInline">
+                        <!-- Nom, orientation, mots-clés, signification injectés par JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Bouton de fermeture sous les 2 colonnes -->
+                <div class="card-actions">
+                    <button class="card-action-button close-button-new" id="closeButton">
+                        <span>↺</span> Recommencer
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- === SECTION PROMOTIONNELLE POUR LA FORMATION === -->
-        <!-- Présente la formation en Psycho-Tarot avec appel à l'action -->
-        <section class="promo-section">
-            <h2>Formation Certifiée IPHM en Tarologie Professionnelle</h2>
-            <p>
-                LA TAROT ACADÉMIE propose une formation complète en Psycho-Tarot Professionnel, certifiée par l'<strong>IPHM</strong> (International Practitioners of Holistic Medicine). Cette certification garantit une formation rigoureuse qui allie expertise en tarologie, compétences thérapeutiques et éthique professionnelle. La formation s'appuie sur le Tarot Rider-Waite Smith et permet aux praticiens de développer une offre professionnelle pérenne et alignée avec leurs valeurs.
-            </p>
-
-            <!-- Logo IPHM de certification -->
-            <div class="iphm-logo-container">
-                <span class="iphm-text">En savoir plus</span>
-                <img src="images/logo/IPHM_logo.jpg" alt="IPHM Accreditation" class="iphm-logo" id="iphmLogo">
-            </div>
-        </section>
     </div>
 
     <!-- === FOOTER === -->
     <!-- Pied de page simple et élégant -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">
-                <img src="images/logo/logo_LaTarotAcademie.png" alt="LA TAROT ACADÉMIE" class="footer-logo-img">
-            </div>
-
             <div class="footer-text">
                 <p class="footer-title">LA TAROT ACADÉMIE</p>
                 <p class="footer-subtitle">Formation Professionnelle en Tarologie - Certifiée IPHM</p>
@@ -102,7 +149,7 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2025 LA TAROT ACADÉMIE - Tous droits réservés</p>
-                <p class="footer-credit">✨ Outil de tirage interactif pour les webinaires ✨</p>
+                <p class="footer-credit">✨ Outil de tirage interactif pour les workshops ✨</p>
             </div>
         </div>
     </footer>
@@ -164,44 +211,9 @@
         </div>
     </div>
 
-    <!-- === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === -->
-    <!-- Fenêtre modale qui s'affiche lors du tirage avec animation 3D -->
-    <div class="card-overlay" id="cardOverlay">
-        <!-- Container de la carte avec effet 3D -->
-        <div class="card-display-container">
-            <div class="card-container">
-                <!-- Élément qui effectue la rotation 3D (flip) -->
-                <div class="card-flip" id="cardFlip">
-                    <!-- Face arrière de la carte (dos doré) -->
-                    <div class="card-back"></div>
-                    <!-- Face avant de la carte (contenu dynamique) -->
-                    <div class="card-face" id="cardFace">
-                        <!-- Le contenu de la carte sera inséré ici dynamiquement par JavaScript -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Boutons d'action sous la carte -->
-            <div class="card-actions">
-                <button class="card-action-button info-button" id="infoButton">
-                    <span>📖</span> Signification
-                </button>
-                <button class="card-action-button close-button-new" id="closeButton">
-                    <span>↩</span> Retour
-                </button>
-            </div>
-        </div>
-
-        <!-- Zone d'information sur la carte -->
-        <div class="card-info-panel" id="cardInfoPanel">
-            <button class="card-info-close" id="cardInfoClose">✕</button>
-            <div class="card-info-content" id="cardInfoContent">
-                <!-- Les informations de la carte seront insérées ici -->
-            </div>
-        </div>
-    </div>
-
     <!-- === CHARGEMENT DU JAVASCRIPT === -->
+    <!-- Données des 22 Arcanes Majeurs (endroit + envers) chargées avant le script principal -->
+    <script src="cards-data.js"></script>
     <!-- Script principal gérant toutes les interactions et animations -->
     <script src="script.js"></script>
 </body>

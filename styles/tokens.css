@@ -1,0 +1,202 @@
+/* ============================================================
+   TOKENS MARQUE - LA Tarot Académie (portage vanilla)
+   Source : la-tarot-academy-website/src/app/globals.css
+   Usage  : <link rel="stylesheet" href="./styles/tokens.css">
+   ============================================================ */
+
+/* ---------- POLICES (WOFF2 variable, local) ---------- */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-garamond-variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pinyon Script";
+  src: url("../fonts/pinyon-script-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/caveat-variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* ---------- TOKENS ---------- */
+:root {
+  /* Or : accent décoratif UNIQUEMENT (jamais un bouton) */
+  --primary: #A68245;
+  --primary-light: #C9A66B;
+  --primary-dark: #8B6914;
+  --primary-muted: #D4C4A8;
+
+  /* Bordeaux : couleur d'ACTION unique (tous les CTA) */
+  --tertiary: #722F37;
+  --tertiary-light: #9A4A54;
+  --tertiary-dark: #4A1F24;
+
+  /* Brun secondaire */
+  --secondary: #4A3728;
+
+  /* Surfaces */
+  --background: #F5F0E8;
+  --surface-soft: #E8E0D5;
+  --surface-card: #FAF7F2;
+  --surface-dark: #4A3728;
+  --surface-dark-elevated: #2E2218;
+  --hairline: #E8E0D5;
+
+  /* Texte */
+  --ink: #1A1A1A;
+  --body: #3D3A37;
+  --muted: #6B5344;
+  --muted-soft: #9A9590;
+  --on-dark: #FAF7F2;
+  --on-dark-soft: #A09D96;
+
+  /* États */
+  --success: #4A7C59;
+  --warning: #D4A03E;
+  --error: #A63D40;
+
+  /* Polices */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-script: "Pinyon Script", cursive;
+  --font-handwritten: "Caveat", cursive;
+
+  /* Rayons */
+  --radius-pill: 9999px;
+  --radius-card: 16px;
+  --radius-lg: 24px;
+
+  /* Ombres (doctrine : color-block d'abord, ombre rare) */
+  --shadow-product: 0 8px 32px rgba(26, 26, 26, 0.16);
+  --shadow-atmospheric: 0 30px 80px -30px rgba(74, 55, 40, 0.15);
+  --shadow-glass-button: 0 6px 14px rgba(114,47,55,0.35), 0 2px 4px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 4px rgba(0,0,0,0.25),
+    inset 4px 4px 8px rgba(255,255,255,0.10), inset -4px -4px 8px rgba(0,0,0,0.22);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-soft: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Spacing (mobile) */
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-section: 4rem;
+}
+
+/* Spacing desktop (≥1024px) */
+@media (min-width: 1024px) {
+  :root {
+    --space-xs: 1rem;
+    --space-s: 1.5rem;
+    --space-m: 2.25rem;
+    --space-l: 3rem;
+    --space-xl: 4.5rem;
+    --space-2xl: 6rem;
+    --space-section: 8rem;
+  }
+}
+
+/* ---------- TYPOGRAPHIE UTILITAIRE ---------- */
+.display-xl { font-family: var(--font-serif); font-weight: 400; font-size: 2rem; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); }
+.display-lg { font-family: var(--font-serif); font-weight: 500; font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+.display-md { font-family: var(--font-serif); font-weight: 500; font-size: 1.5rem; line-height: 1.2; color: var(--ink); }
+.body-lg { font-family: var(--font-sans); font-weight: 400; font-size: 1rem; line-height: 1.55; color: var(--body); }
+.body-md { font-family: var(--font-sans); font-weight: 400; font-size: 0.9375rem; line-height: 1.6; color: var(--body); }
+.caption-uppercase { font-family: var(--font-sans); font-weight: 500; font-size: 0.6875rem; letter-spacing: 0.125em; text-transform: uppercase; color: var(--muted); }
+
+@media (min-width: 1024px) {
+  .display-xl { font-size: 4rem; }
+  .display-lg { font-size: 3rem; }
+  .display-md { font-size: 2.25rem; }
+  .body-lg { font-size: 1.125rem; }
+  .body-md { font-size: 1rem; }
+  .caption-uppercase { font-size: 0.75rem; }
+}
+
+/* ---------- BOUTON PILL (porté de PillButton.tsx) ----------
+   Doctrine "pression physique" : hover = enfoncement léger,
+   active = enfoncement complet. Jamais de pop vers le haut. */
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.75rem 1.5rem;      /* size default */
+  font-size: 0.9375rem;         /* 15px */
+  transition: all 150ms var(--ease-standard);
+}
+.pill-button:hover { transform: translateY(1px) scale(0.99); }
+.pill-button:active { transform: translateY(2px) scale(0.96); }
+.pill-button:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.3); }
+.pill-button:disabled { pointer-events: none; opacity: 0.5; }
+
+/* Variante primaire : bordeaux plein + relief 3D (action principale) */
+.pill-button--primary {
+  background: var(--tertiary);
+  color: #fff;
+  box-shadow: var(--shadow-glass-button);
+}
+.pill-button--primary:hover { background: var(--tertiary-light); }
+
+/* Variante secondaire : outline bordeaux, remplissage au hover */
+.pill-button--secondary {
+  background: transparent;
+  color: var(--tertiary);
+  border: 1px solid var(--tertiary);
+}
+.pill-button--secondary:hover { background: var(--tertiary); color: #fff; }
+
+/* Tailles */
+.pill-button--sm { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+.pill-button--lg { padding: 1rem 2rem; font-size: 1.0625rem; }
+
+/* ---------- CARTE FLOTTANTE (ombre atmospheric signature) ---------- */
+.card-atmospheric {
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-atmospheric);
+}
+
+/* ---------- CARTE DE TAROT INVERSÉE (position "renversée") ----------
+   Rotation 180° = exactement l'apparence physique d'une carte tirée à l'envers. */
+.tarot-card--reversed,
+.card-image.reversed,
+.card-image-placeholder.reversed,
+#thumbnailImage.reversed {
+  transform: rotate(180deg);
+}
+
+/* Label d'orientation (À l'endroit / À l'envers) dans le panneau d'info */
+.card-info-content .card-orientation {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 14px;
+}

@@ -11,21 +11,71 @@
 /* === VARIABLES CSS (COULEURS DE LA MARQUE) === */
 /* Définition des couleurs principales utilisées dans toute l'application */
 :root {
-    --gold: #A68245;    /* Couleur dorée principale de la marque */
-    --black: #0A0A0A;   /* Noir profond pour les fonds */
-    --white: #FFFFFF;   /* Blanc pur pour les contrastes */
-    --shadow: rgba(10, 10, 10, 0.3); /* Ombre standard */
+    --gold: #A68245;    /* Or : accent décoratif de la marque */
+    --black: #0A0A0A;   /* Conservé pour compat (overlays) */
+    --white: #FFFFFF;   /* Blanc pur */
+    --shadow: rgba(74, 55, 40, 0.15); /* Ombre atmospheric DS */
+
+    /* Couleurs claires du Design System (comme le site officiel) */
+    --page-bg: #FAF7F2;      /* Fond crème clair */
+    --card-bg: #FFFFFF;      /* Cartes blanches flottantes */
+    --ink-text: #1A1A1A;     /* Titres, texte principal */
+    --body-text: #3D3A37;    /* Lecture courante */
+    --muted-text: #6B5344;   /* Sous-titres */
+    --bordeaux: #722F37;     /* Couleur d'action unique (boutons) */
+    --bordeaux-light: #9A4A54;
+    --bordeaux-dark: #4A1F24; /* Bas d'orbe du bouton perle */
+    --on-dark: #FAF7F2;      /* Texte sur fond bordeaux */
+    --line: #E8E0D5;         /* Filets 1px */
+    --shadow-atmospheric: 0 30px 80px -30px rgba(74, 55, 40, 0.15);
 }
 
 /* === STYLES DE BASE DU BODY === */
-/* Configuration générale de la page avec fond dégradé sombre */
+/* Page claire, alignée sur le site la-tarot-academie */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0A0A0A 100%);
-    color: var(--white);
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    background: var(--page-bg);
+    color: var(--ink-text);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    /* Sticky footer : le contenu remplit la hauteur, le footer reste collé en bas
+       (évite le vide sous le footer quand la page est plus courte que l'écran). */
+    display: flex;
+    flex-direction: column;
+}
+
+/* === DÉCOR DE FOND : BLOBS BORDEAUX FLOUS === */
+/* Reprend l'ambiance de la homepage : blob-connector.svg rendu très transparent et flou */
+.blob-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;            /* Derrière les particules (z-index: 1) et le contenu (z-index: 2) */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Style commun aux blobs : mêmes valeurs que CanvasBlob/SeparatorBlob de la home */
+.blob {
+    position: absolute;
+    width: min(75vw, 1100px);
+    height: auto;
+    opacity: 0.18;         /* Identique à la home */
+    filter: blur(32px);    /* Gros flou identique à la home */
+}
+
+/* Blob ancré dans le coin haut-gauche (déborde légèrement hors écran) */
+.blob--top-left {
+    top: 0;
+    left: 0;
+    transform: translate(-35%, -35%) rotate(-20deg);
+}
+
+/* Blob ancré dans le coin bas-droite (déborde légèrement hors écran) */
+.blob--bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: translate(35%, 35%) rotate(160deg);
 }
 
 /* === SYSTÈME DE PARTICULES ANIMÉES === */
@@ -73,6 +123,8 @@ body {
 .main-container {
     position: relative;
     z-index: 2;            /* Au-dessus des particules (z-index: 1) */
+    flex: 1 0 auto;        /* Grandit pour pousser le footer en bas (sticky footer) */
+    width: 100%;
     max-width: 1200px;     /* Largeur maximale pour grands écrans */
     margin: 0 auto;        /* Centrage horizontal */
     padding: 20px;
@@ -82,9 +134,8 @@ body {
 /* Zone contenant le logo et le sous-titre avec fond dégradé subtil */
 .header {
     padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(166, 130, 69, 0.1) 0%, transparent 100%);
-    border-radius: 20px;
-    margin-bottom: 40px;
+    background: transparent;
+    margin-bottom: 20px;
 }
 
 /* Container pour le contenu du header */
@@ -95,14 +146,28 @@ body {
     gap: 30px;
 }
 
-/* Logo de La Tarot Académie */
+/* Logo de La Tarot Académie (cercle avatar, agrandi) */
 .academie-logo {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 24px;
     box-shadow: 0 4px 15px rgba(166, 130, 69, 0.3);
     background: white;
+}
+
+/* Titre texte masqué visuellement (le wordmark porte déjà le nom) — gardé pour l'accessibilité */
+.logo-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Container pour le texte du header */
@@ -112,44 +177,46 @@ body {
 
 /* Logo principal de La Tarot Académie */
 .logo {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: var(--gold);
+    font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--ink-text);
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px var(--shadow);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 /* Sous-titre descriptif */
 .subtitle {
-    font-size: 1.2rem;
-    color: var(--gold);
-    opacity: 0.9;
-    letter-spacing: 1px;
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    font-size: 1.05rem;
+    color: var(--muted-text);
+    letter-spacing: 0.5px;
 }
 
 /* === SECTION D'INTRODUCTION === */
 /* Zone explicative avec effet de glassmorphism */
 .intro-section {
-    background: rgba(255, 255, 255, 0.05);      /* Fond légèrement transparent */
-    border: 1px solid rgba(166, 130, 69, 0.3);  /* Bordure dorée subtile */
-    border-radius: 15px;
-    padding: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
     margin-bottom: 40px;
-    backdrop-filter: blur(10px);                /* Effet de flou arrière-plan */
+    box-shadow: var(--shadow-atmospheric, 0 30px 80px -30px rgba(74, 55, 40, 0.15));
 }
 
 .intro-section h2 {
-    color: var(--gold);
+    font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+    color: var(--ink-text);
     margin-bottom: 15px;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .intro-section p {
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    line-height: 1.65;
+    color: var(--body-text);
 }
 
 /* === ZONE DE TIRAGE DES CARTES === */
@@ -174,7 +241,7 @@ body {
     font-weight: bold;
     border-radius: 50px;                        /* Bouton arrondi */
     cursor: pointer;
-    transition: all 0.3s ease;                  /* Animation fluide au survol */
+    transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(166, 130, 69, 0.3),
                 0 4px 10px rgba(0, 0, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -197,9 +264,24 @@ body {
 }
 
 /* État du bouton pendant le mélange des cartes */
-.draw-button.shuffling {
+.draw-button.shuffling,
+.pearl-cta.shuffling {
     pointer-events: none;             /* Désactive le clic pendant l'animation */
     opacity: 0.9;
+}
+
+/* Pendant le mélange, on masque le label perle (garde la place) et on centre l'étoile.
+   Centrage via margin:auto (pas transform) pour ne pas gêner l'animation spin. */
+.pearl-cta.shuffling .pearl-label { opacity: 0; }
+.pearl-cta.shuffling .spinning-star {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    font-size: 1.8rem;
 }
 
 /* Étoile qui tourne pendant le chargement */
@@ -513,32 +595,80 @@ body {
 
 /* === OVERLAY MODAL POUR L'AFFICHAGE DE LA CARTE === */
 /* Fond semi-transparent qui couvre toute la page lors de l'affichage d'une carte */
+/* Affichage inline de la carte : dans le flux de la page, sans overlay ni filtre.
+   (Avant : modale fixed plein écran avec fond noir + backdrop-blur. Retiré : demande user.) */
 .card-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);   /* Fond noir semi-transparent */
     display: none;                      /* Caché par défaut */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;                      /* Au-dessus de tout */
-    backdrop-filter: blur(5px);         /* Flou de l'arrière-plan */
-    padding: 20px;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 30px;
 }
 
 /* Container pour la carte et les boutons */
 .card-display-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .card-overlay.active {
     display: flex;
     animation: fadeIn 0.3s ease;
+}
+
+/* Colonne 2 : signification + mots-clés à côté de la carte */
+.card-info-inline {
+    max-width: 380px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--body-text);
+}
+
+.card-info-inline h3 {
+    font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink-text);
+    margin: 0;
+}
+
+.card-info-inline .card-orientation {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--on-dark);
+    background: var(--bordeaux);
+    padding: 4px 14px;
+    border-radius: 9999px;
+}
+
+.card-info-inline .info-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+}
+
+.card-info-inline .keywords {
+    font-weight: 600;
+    color: var(--muted-text);
+}
+
+.card-info-inline .description {
+    line-height: 1.6;
+    color: var(--body-text);
 }
 
 @keyframes fadeIn {
@@ -676,12 +806,14 @@ body {
 }
 
 /* === NOUVELLE DISPOSITION DE LA CARTE AVEC BOUTONS === */
-/* Container principal pour l'affichage de la carte */
+/* Container principal pour l'affichage de la carte : 2 colonnes (carte + info) */
 .card-display-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
     padding: 20px;
 }
 
@@ -1062,6 +1194,9 @@ body {
 
 /* === FOOTER === */
 .footer {
+    position: relative;
+    z-index: 2;                /* Au-dessus des couches de fond fixed (blobs + étoiles, z-index 0) */
+    flex-shrink: 0;            /* Ne se comprime pas : reste collé en bas (sticky footer) */
     margin-top: 80px;
     padding: 40px 20px 20px;
     background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%);
@@ -1079,9 +1214,11 @@ body {
 }
 
 .footer-logo-img {
-    width: 80px;
-    height: 80px;
-    opacity: 0.8;
+    width: auto;
+    height: 72px;
+    opacity: 0.9;
+    /* Wordmark affiché en blanc sur le footer sombre (logo source = texte foncé transparent) */
+    filter: brightness(0) invert(1);
     transition: opacity 0.3s ease;
 }
 
@@ -1212,10 +1349,37 @@ body {
         right: -10px;
     }
 
-    /* Carte dans l'overlay */
+    /* Bouton perle sur mobile */
+    .pearl-cta {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    .pearl-cta .pearl-wrap {
+        padding: 0.85rem 2rem;
+    }
+
+    /* Carte affichée sur mobile */
     .card-container {
         width: 240px;            /* Carte plus petite sur mobile */
         height: 380px;
+    }
+
+    /* 2 colonnes -> empilé, colonne info pleine largeur */
+    .card-display-container {
+        gap: 24px;
+        padding: 10px;
+    }
+    .card-info-inline {
+        max-width: 88vw;
+    }
+    .card-info-inline h3 {
+        font-size: 1.6rem;
+    }
+    .card-info-inline .keywords {
+        font-size: 0.9rem;
+    }
+    .card-info-inline .description {
+        font-size: 0.9rem;
     }
 
     /* Boutons d'action sous la carte */
@@ -1363,9 +1527,12 @@ body {
         height: 320px;
     }
 
-    .saved-card-thumbnail {
-        width: 140px;
-        height: 210px;
+    .card-info-inline h3 {
+        font-size: 1.4rem;
+    }
+    .card-info-inline .keywords,
+    .card-info-inline .description {
+        font-size: 0.85rem;
     }
 
     /* Panneau d'information sur très petits écrans */
@@ -1388,4 +1555,176 @@ body {
     .card-info-content .description {
         font-size: 0.82rem;
     }
+}
+
+/* ============================================================
+   BOUTON PERLE  (porté du PearlButton du site, recoloré OR)
+   Orbe glossy : reflet clair en haut -> or -> presque brun foncé
+   en bas. Reflets/halo/press identiques à la version bordeaux du
+   site, mais dosés sur la palette or de la marque.
+   ============================================================ */
+.pearl-cta {
+    position: relative;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    border-radius: 9999px;
+    /* Dégradé orbe or : clair lustré -> or -> brun profond (donne la courbe) */
+    background: linear-gradient(
+        180deg,
+        #D4AF37 0%,
+        var(--gold) 50%,
+        #6B5515 100%
+    );
+    transition: box-shadow 0.25s ease, transform 0.12s ease;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0.4rem 0.7rem rgba(255, 255, 255, 0.45),
+        inset 0 -0.4rem 0.7rem rgba(0, 0, 0, 0.12),
+        0 1.3rem 1.8rem -0.5rem rgba(74, 55, 40, 0.5),
+        0 0.5rem 0.7rem -0.4rem rgba(0, 0, 0, 0.35);
+}
+
+.pearl-cta .pearl-wrap {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: inherit;
+    padding: 1rem 2.75rem;
+}
+
+.pearl-cta .pearl-label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    margin: 0;
+    transition: transform 0.25s ease;
+}
+
+/* halo lumineux diffus en haut (reflet chaud or) */
+.pearl-cta .pearl-wrap::before {
+    content: "";
+    position: absolute;
+    left: -15%;
+    right: -15%;
+    top: -100%;
+    bottom: 25%;
+    border-radius: 50%;
+    background-color: rgba(212, 175, 55, 0.30);
+    transition: transform 0.3s ease;
+}
+
+/* reflet brillant crème sur la tranche haute */
+.pearl-cta .pearl-wrap::after {
+    content: "";
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 10%;
+    bottom: 45%;
+    border-radius: 22px 22px 0 0;
+    box-shadow: inset 0 12px 10px -10px rgba(255, 255, 255, 0.7);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.32) 0%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* swap d'icône ✧ -> ✦ au hover */
+.pearl-cta .pearl-icon-hover { display: none; }
+.pearl-cta:hover .pearl-icon-idle { display: none; }
+.pearl-cta:hover .pearl-icon-hover { display: inline-block; }
+
+.pearl-cta:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        inset 0 0.4rem 0.7rem rgba(255, 255, 255, 0.6),
+        inset 0 -0.5rem 0.9rem rgba(0, 0, 0, 0.22),
+        0 1.6rem 2.2rem -0.5rem rgba(74, 55, 40, 0.55),
+        0 0.6rem 0.8rem -0.4rem rgba(0, 0, 0, 0.35);
+}
+.pearl-cta:hover .pearl-wrap::before { transform: translateY(-5%); }
+.pearl-cta:hover .pearl-wrap::after { opacity: 0.5; transform: translateY(5%); }
+.pearl-cta:hover .pearl-label { transform: translateY(-4%); }
+
+.pearl-cta:active {
+    transform: translateY(3px);
+    box-shadow:
+        inset 0 0.3rem 0.6rem rgba(255, 255, 255, 0.45),
+        inset 0 -0.4rem 0.7rem rgba(0, 0, 0, 0.22),
+        0 0.7rem 1rem -0.5rem rgba(74, 55, 40, 0.45),
+        0 0.3rem 0.5rem -0.4rem rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pearl-cta,
+    .pearl-cta .pearl-label,
+    .pearl-cta .pearl-wrap::before,
+    .pearl-cta .pearl-wrap::after {
+        transition: none;
+    }
+}
+
+/* ============================================================
+   CARD BEIGE  (portée du ProBigCard du site)
+   Fond beige #F5F0E8 + pluie d'étoiles ✧ semées en fond.
+   Les ✧ deviennent ✦ si un bouton perle survolé vit dans la card.
+   ============================================================ */
+.beige-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #F5F0E8;
+    box-shadow: var(--shadow-atmospheric);
+}
+
+.beige-card__stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.beige-card__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   ÉTOILES EN FOND DE PAGE  (dispersées aléatoirement)
+   ✧ contour par défaut -> ✦ plein quand le bouton perle est
+   survolé, où qu'il soit dans la page (body:has). Même geste que
+   le remplissage des étoiles du ProBigCard du site.
+   ============================================================ */
+.page-stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;            /* Fond, derrière les particules (1) et le contenu (2) */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.page-star {
+    position: absolute;
+    color: var(--gold);
+    line-height: 1;
+    user-select: none;
+    transition: color 0.3s ease, transform 0.4s ease;
+}
+.page-star::before { content: "\2727"; }  /* ✧ contour */
+
+/* Survol du bouton perle -> toutes les étoiles du fond se remplissent */
+body:has(.pearl-cta:hover) .page-star::before { content: "\2726"; }  /* ✦ plein */
 }

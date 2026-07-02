@@ -1,0 +1,758 @@
+{
+  "majorArcana": [
+    {
+      "id": "00_the_fool",
+      "number": 0,
+      "name": "Le Fou",
+      "image": "./images/cards/22-le-fou.webp",
+      "upright": {
+        "keywords": [
+          "Liberté",
+          "Nouveaux commencements",
+          "Naïveté",
+          "Spontanéité",
+          "Aventure",
+          "Risque",
+          "Enfant intérieur",
+          "Amusement",
+          "Opportunités"
+        ],
+        "meaning": "Lorsque Le Fou apparaît, il met en lumière une énergie d'aventure et d'inconnu. Il invite à prendre des risques et à suivre ses désirs, à se libérer des peurs et des contraintes. Le Fou rappelle que chaque étape du voyage est une occasion d'apprendre, même sans connaître la destination finale. Il montre qu'il n'est pas nécessaire de tout maîtriser ; parfois, il suffit de faire confiance à l'univers et de se lancer dans l'inconnu, prêt à explorer de nouvelles perspectives."
+      },
+      "reversed": {
+        "keywords": [
+          "Imprudence",
+          "Naïveté excessive",
+          "Manque de direction",
+          "Fuite des responsabilités",
+          "Manque de préparation",
+          "Risque non calculé",
+          "Conflit intérieur"
+        ],
+        "meaning": "Lorsque Le Fou apparaît renversé, il indique une énergie mal orientée. Il peut signaler un manque de direction ou une tendance à se lancer dans des situations sans en mesurer les conséquences. Cette position peut aussi suggérer des risques inutiles ou une imprudence, entraînant des erreurs de jugement. La carte peut également évoquer une fuite des responsabilités ou des décisions importantes, ainsi qu'un manque de préparation face à une nouvelle aventure, mettant ainsi en évidence une vulnérabilité. Le Fou renversé met en garde contre une excitation excessive et un manque de planification, ce qui peut mener à des situations déséquilibrées ou instables."
+      }
+    },
+    {
+      "id": "01_the_magician",
+      "number": 1,
+      "name": "Le Magicien",
+      "image": "./images/cards/01-le-magicien.webp",
+      "upright": {
+        "keywords": [
+          "Nouveauté",
+          "Départ",
+          "Initiation",
+          "Chemin",
+          "Alchimie",
+          "Action",
+          "Projets",
+          "Créativité",
+          "Ambition",
+          "Motivation"
+        ],
+        "meaning": "Lorsque Le Magicien apparaît, il signale un moment propice à la création, à la manifestation et à l'utilisation des ressources disponibles pour atteindre un objectif. C'est un appel à prendre en main sa propre réalité, à se connecter avec son pouvoir intérieur et à avoir confiance en ses capacités. La carte invite à agir avec détermination, à utiliser nos talents et nos compétences pour transformer nos idées en actions concrètes. Le Magicien rappelle que l'univers met à notre disposition tout ce dont nous avons besoin pour réussir, à condition d'être aligné et concentré sur nos objectifs."
+      },
+      "reversed": {
+        "keywords": [
+          "Dispersement",
+          "Manque d'expérience",
+          "Frustration",
+          "Manque de créativité",
+          "Manque de ressources",
+          "Doute",
+          "Indécision",
+          "Tricherie"
+        ],
+        "meaning": "Lorsque Le Magicien apparaît renversé, il met en lumière une force mal orientée. Il peut signaler un manque de concentration ou une tendance à manipuler les situations pour obtenir des résultats rapides, souvent sans prendre en compte les conséquences. Cette position peut également indiquer un manque de maîtrise de ses propres ressources, ce qui empêche la manifestation d'un projet ou d'une idée. Le Magicien renversé peut aussi suggérer une utilisation erronée de ses talents ou compétences, entraînant de la frustration. Cela signal aussi, qu'une direction mal choisie peut entraîner des échecs ou des blocages créatifs."
+      }
+    },
+    {
+      "id": "02_the_high_priestess",
+      "number": 2,
+      "name": "La Grande Prêtresse",
+      "image": "./images/cards/02-la-grande-pretresse.webp",
+      "upright": {
+        "keywords": [
+          "Intuition",
+          "Sagesse",
+          "Apprentissage",
+          "Secret",
+          "Réceptivité",
+          "Connaissances cachées",
+          "Spiritualité",
+          "Révélations",
+          "Observation",
+          "Passé"
+        ],
+        "meaning": "La Grande-Prêtresse invite à l'observation attentive, à être témoin de ce qui se joue en soi et autour de soi sans intervenir. Elle invite à prendre du recul et à se connecter à son savoir intérieur. Ici, il n'y a pas d'action à mener, seulement une présence à soi et au monde. C'est dans cette \"attente\", dans ce silence intérieur, que les choses se révèlent et s'intègrent. Elle nous pousse à écouter la voix de l'intuition, à laisser émerger la vérité cachée sans chercher à la forcer, ni même à les dévoiler. Tout se met en place au bon moment, sans précipitation. C'est un instant d'infusion et d'apprentissage."
+      },
+      "reversed": {
+        "keywords": [
+          "Confusion",
+          "Manque de discernement",
+          "Ignorance",
+          "Fermeture",
+          "Période de doute",
+          "Blocage intuitif",
+          "Secrets non révélés"
+        ],
+        "meaning": "La Grande-Prêtresse renversée reflète une période de doute et de confusion, où l'intuition semble bloquée et le discernement altéré. Elle peut signaler une fermeture aux vérités profondes, une difficulté à percevoir ce qui se joue en soi et autour de soi. Les secrets non révélés et l'ignorance de certaines réalités peuvent engendrer une perte de repères. Lorsqu'elle apparaît ainsi, elle met en lumière l'incapacité à accéder à des connaissances cachées, tout en soulignant une résistance à accepter ce qui est encore voilé. Cette carte évoque une période où les informations ne sont pas accessibles et où l'on fait face à des obstacles extérieurs à l'intuition."
+      }
+    },
+    {
+      "id": "03_the_empress",
+      "number": 3,
+      "name": "L'Impératrice",
+      "image": "./images/cards/03-l-imperatrice.webp",
+      "upright": {
+        "keywords": [
+          "Abondance",
+          "Créativité",
+          "Fertilité",
+          "Maternité",
+          "Croissance",
+          "Relations sûres",
+          "Positionnement",
+          "Pouvoir nourrissant",
+          "Communication",
+          "Beauté"
+        ],
+        "meaning": "Lorsque l'Impératrice apparaît, elle invite à célébrer l'abondance de la vie, à laisser sa créativité s'épanouir librement et à nourrir avec soin les projets qui vous tiennent à cœur. Elle rappelle que l'énergie féminine est nourrissante et protectrice, capable de faire grandir ce qui est semé avec amour et patience. Elle encourage à prendre sa place, à affirmer son pouvoir et à communiquer son authenticité au monde. Elle invite à s'ancrer dans la beauté de l'instant présent, à oser d'affirmer avec simplicité."
+      },
+      "reversed": {
+        "keywords": [
+          "Confusion",
+          "Manque de discernement",
+          "Ignorance",
+          "Retard créatif",
+          "Doutes",
+          "Superficialité",
+          "Relations déséquilibrées"
+        ],
+        "meaning": "Lorsque l'Impératrice apparaît renversée, elle indique un manque de créativité ou une incapacité à nourrir pleinement ses projets. Elle peut signaler un déséquilibre dans la vie, une stagnation ou un refus de s'ouvrir à la fertilité intérieure et extérieure. Cette position peut également évoquer une absence de réceptivité, où les opportunités de croissance sont ignorées ou mal exploitées. Le manque d'abondance, ou la difficulté à attirer ce qui est nécessaire pour avancer, peut également être mis en lumière par cette carte. L'Impératrice renversée met en évidence des périodes où l'on néglige ses besoins émotionnels, où l'on se ferme à l'amour universel ou où l'on ne prend pas soin de soi de manière appropriée."
+      }
+    },
+    {
+      "id": "04_the_emperor",
+      "number": 4,
+      "name": "L'Empereur",
+      "image": "./images/cards/04-l-empereur.webp",
+      "upright": {
+        "keywords": [
+          "Stabilité",
+          "Ancrage",
+          "Autorité",
+          "Structure",
+          "Responsabilité",
+          "Leadership",
+          "Discipline",
+          "Fiabilité",
+          "Sécurité",
+          "Fondation solide"
+        ],
+        "meaning": "Lorsque L'Empereur se présente, il met en lumière une énergie de structure et d'ancrage. Il invite à prendre sa place avec assurance, à établir des bases solides et à faire preuve de maturité dans sa façon d'être au monde. Cette carte pousse à affirmer ses limites, à reconnaître son autorité intérieure et à organiser son espace pour que les actions soient efficaces et alignées. L'Empereur montre que le pouvoir véritable naît de la stabilité intérieure, et que la maîtrise de soi ouvre les portes d'un leadership plus assuré."
+      },
+      "reversed": {
+        "keywords": [
+          "Contrôle excessif",
+          "Rigidité",
+          "Déséquilibre",
+          "Peur de perdre le pouvoir",
+          "Entêtement",
+          "Instabilité",
+          "Manque d'ancrage",
+          "Autorité imposée"
+        ],
+        "meaning": "Lorsque L'Empereur apparaît renversé, il signale un déséquilibre dans le rapport à l'autorité, que ce soit une tendance à contrôler excessivement, ou une difficulté à se positionner clairement. Cette carte révèle une rigidité mentale, une peur de lâcher prise ou une dépendance à des structures trop strictes ou dépassées. L'Empereur renversé met en lumière une difficulté à assumer ses responsabilités, ou à poser des fondations solides. Il invite à questionner le rapport au pouvoir : est-il imposé ou vécu de manière consciente et bienveillante ? Ici, la carte dévoile la peur de perdre sa place et son pouvoir."
+      }
+    },
+    {
+      "id": "05_the_hierophant",
+      "number": 5,
+      "name": "Le Hiérophante",
+      "image": "./images/cards/05-le-hierophante.webp",
+      "upright": {
+        "keywords": [
+          "Sagesse",
+          "Divinité",
+          "Spiritualité",
+          "Clairvoyance",
+          "Conseil",
+          "Transmission",
+          "Traditions",
+          "Éducation",
+          "Croyances",
+          "Foi"
+        ],
+        "meaning": "Lorsque Le Hiérophante apparaît, il met en lumière l'importance de la tradition, de la foi et de la quête spirituelle. Il invite à chercher la sagesse dans les enseignements, à se relier à des pratiques spirituelles ou philosophiques éprouvées. Cette carte évoque la nécessité de s'engager dans une recherche intérieure guidée par des valeurs fortes et des principes éthiques. Le Hiérophante rappelle que parfois, il est important de suivre un enseignement plus large pour se nourrir de la connaissance collective."
+      },
+      "reversed": {
+        "keywords": [
+          "Manque de flexibilité",
+          "Isolement spirituel",
+          "Dogmatisation",
+          "Influençabilité",
+          "Remise en question des traditions",
+          "Rigidité"
+        ],
+        "meaning": "Lorsque Le Hiérophante apparaît renversé, il signale une remise en question des traditions et des croyances établies. Cette carte met en lumière une rigidité dans les convictions et un dogmatisme, ce qui peut mener à une perte de confiance dans sa voix intérieure. Cette stagnation sur le chemin spirituel peut faire perdre sa direction, en se perdant dans diverses conceptions spirituelles ou aspects religieux. Le Hiérophante renversé invite à remettre en question les structures de croyance imposées et à retrouver une approche plus flexible et ouverte de la spiritualité."
+      }
+    },
+    {
+      "id": "06_the_lovers",
+      "number": 6,
+      "name": "Les Amoureux",
+      "image": "./images/cards/06-les-amoureux.webp",
+      "upright": {
+        "keywords": [
+          "Décision",
+          "Maturité",
+          "Amour",
+          "Désirs",
+          "Plaisir",
+          "Choix",
+          "Croissance",
+          "Partenariat",
+          "Dualité",
+          "Indépendance"
+        ],
+        "meaning": "Lorsque Les Amoureux apparaissent, ils mettent en lumière l'importance de faire des choix en conscience, guidés par l'amour, l'authenticité et l'alignement intérieur. Cette carte évoque le respect des valeurs profondes, sans compromis dicté par le besoin de plaire ou la peur du conflit. Elle souligne la puissance du lien relationnel, qui peut devenir un miroir, un catalyseur ou un chemin vers une meilleure connaissance de soi. Elle rappelle enfin que l'harmonie véritable naît de la liberté partagée, et non de la dépendance."
+      },
+      "reversed": {
+        "keywords": [
+          "Peur de l'engagement",
+          "Déception",
+          "Dépendance",
+          "Ne veut pas se confronter",
+          "Rupture d'idéaux",
+          "Manque d'alignement",
+          "Relations déséquilibrées",
+          "Confusion intérieure",
+          "Refus de la vérité",
+          "Manipulation"
+        ],
+        "meaning": "Lorsque Les Amoureux apparaissent renversés, ils signalent des choix influencés par la peur de l'engagement ou des décisions prises dans la confusion intérieure. Cette carte met en lumière une difficulté à affronter la vérité, ce qui peut mener à des relations déséquilibrées, marquées par la dépendance ou la manipulation. Les Amoureux renversés peuvent aussi indiquer une rupture d'idéaux, une perte d'alignement avec ses véritables désirs ou valeurs. Cela peut aussi signaler une incapacité à prendre des décisions claires, créant une situation de confusion et d'incertitude dans les relations."
+      }
+    },
+    {
+      "id": "07_the_chariot",
+      "number": 7,
+      "name": "Le Chariot",
+      "image": "./images/cards/07-le-chariot.webp",
+      "upright": {
+        "keywords": [
+          "Détermination",
+          "Indépendance",
+          "Maîtrise de soi",
+          "Volonté",
+          "Ambition",
+          "Action",
+          "Direction",
+          "Déplacement",
+          "Fort mental",
+          "Prendre son envol"
+        ],
+        "meaning": "Lorsque Le Chariot se présente, il nous pousse à prendre le contrôle de notre vie et à avancer résolument vers nos objectifs. Il invite à agir avec confiance et à affronter les obstacles avec détermination. Cette carte nous rappelle qu'il est temps de prendre les commandes, de maîtriser nos émotions et de canaliser notre énergie pour progresser. Elle suggère de trouver le courage de sortir de notre zone de confort et de se lancer dans une nouvelle aventure."
+      },
+      "reversed": {
+        "keywords": [
+          "Perte de direction",
+          "Domination excessive",
+          "Manque de contrôle",
+          "Instabilité",
+          "Impatience",
+          "Frustration",
+          "Sentiment d'impuissance",
+          "Échec temporaire",
+          "Chemin retardé"
+        ],
+        "meaning": "Lorsque Le Chariot apparaît renversé, il peut signaler une perte de direction ou un sentiment de ne plus savoir où aller. Ce renversement met en lumière une lutte pour maintenir le contrôle, un sentiment d'être à la merci des circonstances extérieures ou une frustration due à des obstacles. Il peut aussi évoquer une tendance à se laisser emporter par les émotions ou les désirs, perdant ainsi la maîtrise de soi. La carte peut indiquer une situation où l'avancement est difficile, où les actions semblent ne mener nulle part ou où la confiance en la capacité à diriger se perd. Elle peut aussi révéler un excès de contrôle ou une domination excessive sur les autres, perturbant l'équilibre intérieur et les relations."
+      }
+    },
+    {
+      "id": "08_strength",
+      "number": 8,
+      "name": "La Force",
+      "image": "./images/cards/08-la-force.webp",
+      "upright": {
+        "keywords": [
+          "Maîtrise de soi",
+          "Courage",
+          "Patience",
+          "Résilience",
+          "Endurance",
+          "Persévérance",
+          "Force intérieure",
+          "Gestion émotionnelle",
+          "Maîtrise des pulsions",
+          "Vaincre les obstacles"
+        ],
+        "meaning": "Lorsque La Force se présente, elle invite à faire face à des défis avec courage et calme. Elle incite à faire preuve de maîtrise de soi, à croire en sa capacité à gérer et à avancer avec confiance. La Force symbolise une période où l'on doit puiser dans ses ressources intérieures pour surmonter des obstacles. Elle encourage la patience et la persévérance dans les moments difficiles et montre que l'endurance et la douceur mènent souvent au succès."
+      },
+      "reversed": {
+        "keywords": [
+          "Perte de contrôle",
+          "Impulsivité",
+          "Manque de confiance",
+          "Frustration",
+          "Colère mal gérée",
+          "Impatience",
+          "Doute",
+          "Sentiment d'impuissance",
+          "Rapports de force"
+        ],
+        "meaning": "La Force renversée symbolise la perte de contrôle et l'incapacité à gérer les émotions de manière constructive. Lorsqu'elle apparaît, cette carte peut indiquer un moment où l'impulsivité prend le dessus, où la frustration et la colère mal gérée entraînent des réactions excessives. Cela peut être un signe de manque de confiance en soi, de doute intérieur ou de sentiment d'impuissance face aux défis. Elle met en lumière l'impatience, le manque de patience et l'incapacité à rester calme face à l'adversité. La Force renversée révèle aussi des rapports de force déséquilibrés, où la volonté de contrôler ou de dominer les autres se retourne contre soi, rendant difficile la recherche de solutions harmonieuses."
+      }
+    },
+    {
+      "id": "09_the_hermit",
+      "number": 9,
+      "name": "L'Hermite",
+      "image": "./images/cards/09-l-ermite.webp",
+      "upright": {
+        "keywords": [
+          "Sagesse",
+          "Introspection",
+          "Recherche intérieure",
+          "Solitude",
+          "Voyage intérieur",
+          "Quête du soi",
+          "Intériorisation",
+          "Contemplation",
+          "Retrait",
+          "Connaissance de soi"
+        ],
+        "meaning": "Lorsque l'Hermite apparaît, il invite à un temps de retrait et d'introspection. Ce moment de solitude permet de rechercher les réponses à des questions qui ont longtemps été ignorées ou inaccessibles. L'Hermite souligne l'importance de se connecter à sa sagesse intérieure, de se permettre d'explorer ses pensées et ses émotions dans le but de mieux se comprendre et d'avancer avec une vision plus claire et plus profonde. Parfois, l'Hermite peut signaler la nécessité de suivre son propre chemin, sans se laisser influencer par l'opinion des autres."
+      },
+      "reversed": {
+        "keywords": [
+          "Isolement excessif",
+          "Solitude forcée",
+          "Égarement",
+          "Peur du retrait",
+          "Refus de l'introspection",
+          "Absence de direction",
+          "Ressassement",
+          "Isolement social"
+        ],
+        "meaning": "Lorsque L'Hermite apparaît renversé, il peut signaler une période d'isolement excessif, où la solitude devient pesante et contre-productive. Cette carte indique un retrait excessif du monde extérieur, souvent par peur. L'Hermite renversé peut aussi évoquer une période de confusion, où l'on se sent perdu sans direction claire, ne sachant pas où chercher les réponses. Cela peut aussi suggérer un refus de l'introspection ou une difficulté à se connecter avec sa sagesse intérieure. Parfois, L'Hermite renversé révèle un manque de guidance ou de support extérieur, ce qui peut entraîner un sentiment de solitude désagréable ou un manque de clarté mentale. Cette carte met en garde contre la tendance à s'enfermer dans une recherche sans fin, sans jamais trouver la lumière ou la réponse espérée."
+      }
+    },
+    {
+      "id": "10_wheel_of_fortune",
+      "number": 10,
+      "name": "La Roue de Fortune",
+      "image": "./images/cards/10-la-roue-de-fortune.webp",
+      "upright": {
+        "keywords": [
+          "Cycles",
+          "Chance",
+          "Destin",
+          "Retournements de situation",
+          "Hauts et bas",
+          "Adaptabilité",
+          "Opportunité",
+          "Période d'optimisme",
+          "Situations débloquées"
+        ],
+        "meaning": "Lorsque la Roue de la Fortune apparaît, elle rappelle que les événements qui se produisent sont le résultat de circonstances. Elle suggère qu'il est important d'être flexible et prêt.e à accepter les changements, tout en sachant qu'ils font partie d'un chemin plus vaste. Cette carte peut aussi indiquer une période de chance ou une opportunité unique, souvent liée à des choix ou à des actions passées. Elle met l'accent sur la nécessité d'accepter l'incertitude et de se préparer à de nouvelles phases de la vie, qu'elles soient positives ou négatives. Comme son nom l'indique, la roue tourne."
+      },
+      "reversed": {
+        "keywords": [
+          "Destin contrarié",
+          "Blocages",
+          "Imprévisibilité",
+          "Résistance au changement",
+          "Retard",
+          "Phase défavorable",
+          "Porter les fardeaux",
+          "Déclin de chance",
+          "Contre-temps imprévu"
+        ],
+        "meaning": "Lorsque la Roue de la Fortune apparaît renversée, elle signale un blocage ou un retard dans les cycles naturels. Les événements ne se déroulent pas comme prévu, et la chance semble tourner contre. Cela peut être lié à une résistance, qu'elle soit intérieure ou extérieure. Une spirale peut se mettre en place, rendant l'avancée difficile. Cette carte invite à accepter que certaines choses échappent au contrôle et qu'un temps d'attente peut être nécessaire pour que les événements suivent leur cours naturel. Elle peut aussi indiquer que des fardeaux sont portés, souvent dus à des choix passés ou à des résistances à l'évolution. Le poids de ces fardeaux peut ralentir la progression, mais ils doivent être intégrés avant de pouvoir avancer."
+      }
+    },
+    {
+      "id": "11_justice",
+      "number": 11,
+      "name": "La Justice",
+      "image": "./images/cards/11-la-justice.webp",
+      "upright": {
+        "keywords": [
+          "Équilibre",
+          "Vérité",
+          "Honnêteté",
+          "Responsabilité",
+          "Ordre",
+          "Hauts et bas",
+          "Droiture",
+          "Quart d'heure de vérité",
+          "Affaires résolues",
+          "Loi",
+          "Pour et contre"
+        ],
+        "meaning": "La Justice nous invite à faire preuve d'honnêteté et à assumer pleinement nos choix et actions. Elle indique qu'il est temps de rétablir l'équilibre, que ce soit dans une situation extérieure ou intérieure. Cette carte suggère de réfléchir à nos décisions, de jauger le pour et le contre, et de prendre la responsabilité de leurs conséquences. Elle pousse à faire preuve de clarté et de rigueur dans nos décisions, de trancher lorsque nécessaire, et de trouver l'équilibre, tout en restant fidèles à nos principes d'équité et de justice."
+      },
+      "reversed": {
+        "keywords": [
+          "Injustice",
+          "Décision défavorable",
+          "Erreur dans les affaires",
+          "Rigidité",
+          "Évasion des responsabilités",
+          "Manque d'intégrité",
+          "Déséquilibre",
+          "Mauvaise décision"
+        ],
+        "meaning": "Lorsque la Justice apparaît renversée, elle indique un déséquilibre ou une injustice. Cela peut signifier des décisions biaisées, des manipulations ou une négligence de l'intégrité. La Justice renversée signale aussi un manque d'équité dans une situation, ou une erreur de jugement, souvent due à des émotions ou des préjugés. Cette carte peut aussi représenter un retard dans la justice ou des responsabilités évitées. Elle peut également indiquer une incapacité à prendre pleinement la responsabilité de ses actions ou un déni des conséquences. Un manque de clarté dans les choix ou une tendance à ignorer la vérité sont des aspects clés à surveiller."
+      }
+    },
+    {
+      "id": "12_the_hanged_man",
+      "number": 12,
+      "name": "Le Pendu",
+      "image": "./images/cards/12-le-pendu.webp",
+      "upright": {
+        "keywords": [
+          "Réflexion",
+          "Lâcher-prise",
+          "Changement de perspective",
+          "Patience",
+          "Attente nécessaire",
+          "Nouvel angle de vue",
+          "Retournement",
+          "Impuissance",
+          "Remise en question",
+          "Période de latence"
+        ],
+        "meaning": "Le Pendu invite à la patience et à la réflexion. Ce n'est pas le moment d'agir ou de forcer les choses, mais plutôt de prendre le temps de comprendre et d'accepter ce qui est. Il suggère que, parfois, les périodes d'immobilité sont nécessaires pour permettre une évolution intérieure. Cette carte incite à changer de perspective, à voir les choses sous un autre angle pour mieux avancer. Le Pendu pousse à accepter que certains changements ne peuvent se produire que lorsque nous sommes prêts à lâcher prise."
+      },
+      "reversed": {
+        "keywords": [
+          "Impasse",
+          "Immobilité",
+          "Refus du changement",
+          "Manque de perspective",
+          "Stagnation",
+          "Sacrifice non souhaité",
+          "Résistance au lâcher-prise",
+          "Évitement des responsabilités",
+          "Manque d'acceptation",
+          "Prise de tête"
+        ],
+        "meaning": "Le Pendu renversé signale un manque de mouvement, mais associé à un blocage plus actif. Cela peut signifier une résistance à voir les choses sous un autre angle ou à accepter la nécessité de changements. L'énergie de cette carte renversée montre un refus de lâcher prise, une stagnation ou une impasse. Le Pendu renversé peut aussi indiquer une période où l'on se sent piégé dans une situation sans issue, ou où le sacrifice demandé semble trop lourd ou injustifié. Elle peut aussi signaler un manque d'introspection et une tendance à éviter de faire face aux vérités difficiles."
+      }
+    },
+    {
+      "id": "13_death",
+      "number": 13,
+      "name": "La Mort",
+      "image": "./images/cards/13-la-mort.webp",
+      "upright": {
+        "keywords": [
+          "Fin",
+          "Transformation",
+          "Renouveau",
+          "Libération",
+          "Cycle",
+          "Renaissance",
+          "Dépouillement",
+          "Nettoyage",
+          "Cycle de la vie",
+          "Transition",
+          "Deuil symbolique",
+          "Changement inévitable"
+        ],
+        "meaning": "La Mort annonce un changement important, souvent un deuil symbolique ou un nettoyage. Elle nous invite à accepter la fin d'un cycle, que ce soit une situation, une relation, ou un aspect de soi. Le processus peut sembler difficile, mais il ouvre la voie à un renouveau. L'invitation est de se libérer des fardeaux du passé pour permettre à la transformation de se produire et faire place à un renouveau. Accepter ce changement inévitable permet de se réinventer et d'évoluer vers une nouvelle version de soi-même."
+      },
+      "reversed": {
+        "keywords": [
+          "Crainte",
+          "Attachement au passé",
+          "Prolongation d'un cycle négatif",
+          "Incapacité de renoncer",
+          "Résistance au changement",
+          "Refus de la transformation",
+          "Peur de lâcher"
+        ],
+        "meaning": "Lorsque la Mort apparaît renversée, elle indique une résistance au changement, un refus de faire face à une transition nécessaire. Cette carte montre souvent un blocage émotionnel, où l'on s'accroche au passé, empêchant la transformation de se produire. Le cycle ne se termine pas comme il le devrait, et la stagnation prend le dessus. L'incapacité à lâcher prise crée une tension intérieure et une perte d'élan. Cette carte peut aussi indiquer que l'on évite un deuil symbolique ou que l'on ne parvient pas à se débarrasser d'aspects de soi ou de situations qui sont désormais obsolètes. Cela signale souvent une peur profonde du changement, qui empêche la renaissance et le renouveau."
+      }
+    },
+    {
+      "id": "14_temperance",
+      "number": 14,
+      "name": "La Tempérance",
+      "image": "./images/cards/14-la-temperance.webp",
+      "upright": {
+        "keywords": [
+          "Équilibre",
+          "Harmonie",
+          "Modération",
+          "Intégration",
+          "Réconciliation",
+          "Juste-milieu",
+          "Mettre de l'eau dans son vin",
+          "Douceur",
+          "Réconfort",
+          "Guidance"
+        ],
+        "meaning": "Lorsque la Tempérance apparaît, elle invite à retrouver l'équilibre dans la vie, à éviter les extrêmes et à trouver le juste milieu. Elle encourage à faire preuve de modération, de patience et de persévérance face aux moments de changement ou de transition. Ce calme amène à ne pas sur-réagir, car cela risquerait de déséquilibrer le processus. C'est un appel à la guérison, à l'intégration de nouvelles expériences et à l'harmonisation des différentes parts de soi. La carte pousse à être plus ouvert et à trouver l'équilibre entre le monde spirituel et matériel. Elle rappelle que l'équilibre est un processus continu, nécessitant douceur et sagesse."
+      },
+      "reversed": {
+        "keywords": [
+          "Déséquilibre",
+          "Impatience",
+          "Excès",
+          "Manque d'harmonie",
+          "Confusion",
+          "Difficulté à intégrer les expériences",
+          "Intolérance",
+          "Rejet de la patience"
+        ],
+        "meaning": "Lorsque la Tempérance apparaît renversée, elle signale un déséquilibre ou un manque d'harmonie dans la vie. Il peut y avoir une tendance aux excès ou à l'impatience, à agir sans réfléchir ou à se précipiter dans des décisions importantes. La carte indique également un manque de modération dans certaines situations, ainsi qu'une difficulté à intégrer les leçons de la vie de manière calme et mesurée. Cela peut aussi signaler un retard dans la guérison ou une incapacité à trouver un terrain d'entente avec les autres. Le déséquilibre interne peut mener à des réactions excessives, et une incapacité à voir les choses sous un autre angle, entravant ainsi le processus de transformation nécessaire."
+      }
+    },
+    {
+      "id": "15_the_devil",
+      "number": 15,
+      "name": "Le Diable",
+      "image": "./images/cards/15-le-diable.webp",
+      "upright": {
+        "keywords": [
+          "Illusion",
+          "Tentation",
+          "Addictions",
+          "Attachement",
+          "Ego",
+          "Chaînes invisibles",
+          "Matérialisme",
+          "Asservissement",
+          "Nature des hommes",
+          "Dépendances"
+        ],
+        "meaning": "Lorsque Le Diable apparaît, il appelle à une prise de conscience des illusions et des dépendances dans notre vie. Il nous invite à identifier les comportements ou relations qui nous limitent et à prendre la responsabilité de notre propre liberté. Cette carte nous rappelle que les chaînes ne sont pas aussi solides qu'elles le paraissent, et qu'en prenant conscience de notre pouvoir personnel, nous pouvons nous libérer. Elle nous pousse à examiner nos attachements au matériel, aux désirs immédiats et aux croyances limitantes, afin de libérer notre énergie créative et spirituelle. Cette carte met en lumière les besoins conditionnés de l'ego et les dynamiques de pouvoir qu'il peut engendrer."
+      },
+      "reversed": {
+        "keywords": [
+          "Détachement",
+          "Prise de conscience",
+          "Évasion",
+          "Rupture des chaînes",
+          "Auto-dépassement",
+          "Lutter contre la dépendance",
+          "Briser les liens négatifs",
+          "Dépasser les conditionnements de l'ego"
+        ],
+        "meaning": "Lorsque Le Diable apparaît renversé, il symbolise un détachement progressif des illusions et des liens toxiques. Il marque souvent une prise de conscience profonde des mécanismes intérieurs qui maintiennent prisonnière une part de soi. Cette carte annonce une phase d'évasion intérieure, une volonté de s'extraire des schémas destructeurs, des dépendances, ou des croyances limitantes. Elle invite à la rupture des chaînes invisibles, à sortir de la victimisation pour reprendre la maîtrise de ses choix. Le Diable renversé est une impulsion vers l'auto-dépassement, un mouvement intérieur puissant pour retrouver son pouvoir personnel, s'affranchir des rapports de force et avancer vers une plus grande liberté d'être."
+      }
+    },
+    {
+      "id": "16_the_tower",
+      "number": 16,
+      "name": "La Tour",
+      "image": "./images/cards/16-la-tour.webp",
+      "upright": {
+        "keywords": [
+          "Destruction",
+          "Effondrement",
+          "Libération",
+          "Changement brutal",
+          "Remise en question",
+          "Construction sur des bases solides",
+          "Sortir de la cage dorée",
+          "Démonter les croyances",
+          "Fin d'une illusion"
+        ],
+        "meaning": "Lorsque La Tour apparaît, elle met en lumière un effondrement nécessaire. Elle peut indiquer une période de crise, de révélation ou d'événements inattendus qui viennent bousculer l'ordre établi. Mais ces bouleversements servent une fonction : révéler une vérité, mettre fin à une illusion, provoquer une libération. Cette carte invite à ne pas résister à ce qui tombe. Elle enseigne que même dans le chaos, il y a une sagesse. Elle appelle à accueillir la déconstruction comme un acte sacré, à faire preuve de courage pour affronter la réalité, et à se préparer à rebâtir sur des fondations plus justes, plus alignées avec qui l'on est vraiment."
+      },
+      "reversed": {
+        "keywords": [
+          "Évitement de la vérité",
+          "Crise intérieure",
+          "Instabilité latente",
+          "Refus de lâcher prise",
+          "Peur que tout s'effondre",
+          "Résistance au changement",
+          "Phase décroissante",
+          "Changement retardé"
+        ],
+        "meaning": "Lorsque La Tour apparaît renversée, elle signale une résistance au changement, une difficulté à accepter ce qui doit s'effondrer. Il peut s'agir d'un attachement à une situation devenue toxique, ou d'une peur intense face à la perte de contrôle. On sent que quelque chose menace de s'écrouler, mais on s'agrippe, repoussant l'inévitable. Cette carte peut aussi indiquer une crise intérieure, moins visible de l'extérieur, mais tout aussi puissante : une tempête souterraine, une tension qui monte. Elle parle d'un malaise qu'on tente de contenir plutôt que d'exprimer, au risque de voir les choses exploser plus tard, de manière encore plus douloureuse."
+      }
+    },
+    {
+      "id": "17_the_star",
+      "number": 17,
+      "name": "L'Étoile",
+      "image": "./images/cards/17-l-etoile.webp",
+      "upright": {
+        "keywords": [
+          "Espoir",
+          "Guérison",
+          "Inspiration",
+          "Acceptation",
+          "Sérénité",
+          "Suivre sa bonne étoile",
+          "Aller toucher les étoiles",
+          "Période optimiste",
+          "Récompenses",
+          "Créativité"
+        ],
+        "meaning": "Lorsque l'Étoile apparaît, elle nous invite à faire preuve de foi, à suivre notre bonne étoile intérieure. Elle nous rappelle que la vulnérabilité n'est pas une faiblesse, mais une porte ouverte à la réconciliation avec des parts profondes de nous-mêmes. Cette carte nous encourage à avoir confiance en la guérison, à laisser l'inspiration divine nous guider et à faire un pas en avant avec sérénité. Elle nous invite à lâcher prise, à cultiver notre lumière intérieure et à nous reconnecter à notre essence spirituelle, sachant que l'univers nous soutient. Même dans l'incertitude, l'espoir devient une force intérieure qui nous guide."
+      },
+      "reversed": {
+        "keywords": [
+          "Découragement",
+          "Perte d'espoir",
+          "Manque de foi",
+          "Confusion",
+          "Blocage créatif",
+          "Déception",
+          "Nostalgie du passé",
+          "Cherche sa bonne étoile ailleurs"
+        ],
+        "meaning": "Lorsque l'Étoile apparaît renversée, elle signale un manque d'espoir, une perte de connexion avec la guidance spirituelle. Cette carte indique des sentiments de découragement, de confusion ou d'illusion, parfois liés à des attentes irréalistes ou à une déconnexion de la réalité. Elle peut aussi signaler un blocage créatif ou une incapacité à voir la lumière dans une situation difficile. De plus, l'Étoile inversée peut refléter une résistance à s'ouvrir aux autres ou à donner de soi-même, souvent en raison de blessures passées non guéries. Elle suggère également des difficultés à se reconnecter à son intuition et à retrouver la foi en soi, menant à un sentiment de stagnation ou de perte de direction."
+      }
+    },
+    {
+      "id": "18_the_moon",
+      "number": 18,
+      "name": "La Lune",
+      "image": "./images/cards/18-la-lune.webp",
+      "upright": {
+        "keywords": [
+          "Intuition",
+          "Mystères",
+          "Passage de l'inconscient à la conscience",
+          "Éveil psychique",
+          "Émotions enfouies",
+          "Influence des émotions",
+          "Réceptivité",
+          "Expression des sentiments",
+          "Éveil spirituel"
+        ],
+        "meaning": "Lorsque La Lune apparaît, elle invite à plonger dans les mystères de l'inconscient et à explorer des aspects inconnus de soi. Elle met en lumière la nécessité d'écouter et d'exprimer nos émotions profondes. La carte encourage à suivre un chemin intuitif, mais porteur de croissance personnelle, en nous reconnectant à notre vérité intérieure et en explorant ce qui a été caché. Elle pousse à accepter l'invisible, à permettre à nos émotions de s'exprimer pleinement, et à rester réceptifs aux messages subtils du monde intérieur."
+      },
+      "reversed": {
+        "keywords": [
+          "Confusion",
+          "Évasion émotionnelle",
+          "Peurs irrationnelles",
+          "Déni",
+          "Auto-sabotage",
+          "Être lunatique",
+          "Révélations",
+          "Vérité qui éclate",
+          "Doutes de l'instinct",
+          "Influençabilité"
+        ],
+        "meaning": "Lorsque la lune apparaît à l'envers, elle dévoile ce qui est trouble à l'intérieur : un flou émotionnel, des peurs irrationnelles ou des doutes profonds qui déstabilisent l'intuition. Elle peut signaler une tendance à fuir la réalité, à se perdre dans le déni ou dans des projections intérieures confuses. C'est aussi la carte des vérités qui finissent par éclater : ce qui était enfoui se révèle, parfois de manière déstabilisante. Elle met en lumière les formes d'auto-sabotage inconscientes, les comportements lunatiques, ou encore l'influence excessive de l'extérieur sur son monde intérieur. Elle invite à regarder en face ce qui a été ignoré ou refoulé, à traverser le brouillard pour retrouver une forme de clarté émotionnelle et de discernement."
+      }
+    },
+    {
+      "id": "19_the_sun",
+      "number": 19,
+      "name": "Le Soleil",
+      "image": "./images/cards/19-le-soleil.webp",
+      "upright": {
+        "keywords": [
+          "Succès",
+          "Bonheur",
+          "Joie",
+          "Croissance",
+          "Clarté",
+          "Période d'optimisme",
+          "Vitalité",
+          "Protection",
+          "Épanouissement",
+          "Soleil de vie"
+        ],
+        "meaning": "Lorsque Le Soleil apparaît, il éclaire la situation d'une lumière positive. Il annonce une période favorable, pleine de vitalité et de bonheur simple. Il invite à rayonner pleinement, à exprimer sa vérité et à savourer le moment présent. C'est une carte qui touche profondément l'enfant intérieur : celle ou celui qui s'émerveille, qui joue, qui rit sans raison, et qui trouve de la magie dans les choses simples. Le Soleil nous rappelle qu'il est possible de ressentir de la gratitude pour ce qui est déjà là, ici et maintenant, sans attendre que tout soit parfait. Cette carte encourage à faire confiance à la vie, à revenir à l'essentiel, à embrasser sa joie naturelle, et à la partager avec le monde sans retenue, en toute authenticité."
+      },
+      "reversed": {
+        "keywords": [
+          "Doute",
+          "Déconnexion avec sa joie",
+          "Mélancolie",
+          "Manque de clarté",
+          "Peur de briller",
+          "Nuages qui entravent le chemin",
+          "Joie refoulée",
+          "Ombres",
+          "Perte de vitalité",
+          "Doutes de ses potentiels"
+        ],
+        "meaning": "Le Soleil renversé indique un voile posé sur la lumière intérieure. Il ne s'agit pas d'un blocage extérieur, mais d'un éloignement de la joie profonde, d'un oubli de ce qui fait vibrer le cœur. Il peut signaler un doute intérieur, une difficulté à rayonner, ou un affaiblissement de l'élan vital. Cette énergie reflète une forme de distance avec sa vérité, un éclat terni par des croyances limitantes ou des peurs. Le Soleil renversé évoque un état où la spontanéité, la clarté et la joie sont encore présentes ou complètement atténuées, comme si une couche invisible empêchait leur pleine expression. Il peut aussi révéler une forme d'auto-censure, une peur inconsciente de déranger, de se montrer pleinement, de prendre sa place. La lumière est là, mais il manque parfois l'autorisation intérieure de briller."
+      }
+    },
+    {
+      "id": "20_judgment",
+      "number": 20,
+      "name": "Le Jugement",
+      "image": "./images/cards/20-le-jugement.webp",
+      "upright": {
+        "keywords": [
+          "Résurrection",
+          "Renouveau",
+          "Pardon",
+          "Éveil",
+          "Réconciliation",
+          "Appel intérieur",
+          "Jugement intérieur",
+          "Auto-évaluation",
+          "Seconde chance",
+          "Vocation"
+        ],
+        "meaning": "Lorsque Le Jugement apparaît, il invite à l'auto-évaluation et à l'introspection. Il indique qu'il est temps de se libérer des poids du passé et de faire face à des vérités profondes, qu'elles soient agréables ou non. Cette carte peut signaler le moment d'un grand renouveau, où une ancienne version de soi-même est appelée à se transformer. Le Jugement appelle à l'action, à la réconciliation avec soi-même, et à embrasser une nouvelle vision de la vie. Il peut également suggérer qu'il est temps de pardonner, de guérir, et de se donner une seconde chance."
+      },
+      "reversed": {
+        "keywords": [
+          "Rejet du pardon",
+          "Stagnation",
+          "Ignorance de l'appel",
+          "Culpabilité",
+          "Incapacité à se libérer",
+          "Croyances limitantes",
+          "Passé qui fait surface",
+          "Erreur de jugement",
+          "Jugement sévère",
+          "Manque de réconciliation"
+        ],
+        "meaning": "Le Jugement renversé indique une période où la transformation reste bloquée. Il fait référence à un rejet du pardon, tant envers soi-même qu'envers les autres, ce qui empêche toute guérison véritable. Cette carte évoque la stagnation, un moment où l'on ignore l'appel intérieur à se libérer du passé et à avancer. Le passé refait surface sous forme de culpabilité, de croyances limitantes, ou de décisions non assumées, entraînant un sentiment d'incapacité à se libérer des poids du passé. Elle met également en lumière une erreur de jugement ou un jugement sévère, soit envers soi-même, soit envers les autres, bloquant ainsi la possibilité de réconciliation et de renouveau."
+      }
+    },
+    {
+      "id": "21_the_world",
+      "number": 21,
+      "name": "Le Monde",
+      "image": "./images/cards/21-le-monde.webp",
+      "upright": {
+        "keywords": [
+          "Accomplissement",
+          "Intégration",
+          "Succès",
+          "Épanouissement",
+          "Réalisation",
+          "Festivités",
+          "Plénitude",
+          "Célébration",
+          "Équilibre",
+          "Réussite"
+        ],
+        "meaning": "Lorsque Le Monde apparaît, il annonce que l'on est arrivé à un point de satisfaction, de réalisation et de complétude. C'est un moment pour célébrer les accomplissements, mais aussi pour se préparer à un nouveau commencement. La carte suggère que l'on est prêt à intégrer pleinement les leçons apprises et à se réconcilier avec son environnement. Elle invite à la gratitude pour ce que l'on a atteint et à l'ouverture à la possibilité de nouveaux cycles d'épanouissement, tout en soulignant la perfection et l'unité retrouvées dans l'accomplissement du chemin parcouru."
+      },
+      "reversed": {
+        "keywords": [
+          "Incomplétude",
+          "Stagnation",
+          "Manque d'intégration",
+          "Fin d'un cycle non vécue",
+          "Restrictions",
+          "Sentiment de non-réalisation",
+          "Cycles non terminés",
+          "Manque d'accomplissement"
+        ],
+        "meaning": "Lorsque Le Monde apparaît renversé, il indique un sentiment d'incomplétude, de cycle non accompli, ou d'une évolution qui semble bloquée. Cette position peut signaler une difficulté à intégrer les leçons du passé, à conclure un chapitre important ou à réussir pleinement un projet. Le Monde renversé évoque aussi la stagnation, où l'on ressent un manque de progrès ou de croissance. Il peut aussi faire allusion à une résistance au changement, ou à un refus d'accepter les transformations nécessaires. Le Monde renversé peut suggérer que l'on se trouve encore dans un état d'attente ou de frustration, sans parvenir à se libérer de ce qui entrave l'épanouissement."
+      }
+    }
+  ]
+}
